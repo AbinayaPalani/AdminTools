@@ -1,0 +1,61 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Google Search",
+    "line": 1,
+    "id": "google-search",
+    "tags": [],
+    "uri": "tests/features/support/AccountDetail.feature",
+    "elements": [
+      {
+        "id": "google-search;searching-google",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Searching Google",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I open Google's search page",
+            "match": {
+              "location": "tests/features/step_definitions/steps.js:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3811000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "the title is \"Google\"",
+            "match": {
+              "location": "tests/features/step_definitions/steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the Google search form exists",
+            "match": {
+              "location": "tests/features/step_definitions/steps.js:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 50000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
