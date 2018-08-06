@@ -1,6 +1,6 @@
 const seleniumServer = require('selenium-server');
 const chromedriver = require('chromedriver');
-const nightwatchCucumber = require('nightwatch-cucumber');
+//const nightwatchCucumber = require('nightwatch-cucumber');
 
 
 
@@ -13,19 +13,14 @@ const nightwatchCucumber = require('nightwatch-cucumber');
 
 
 
-nightwatchCucumber({
-  cucumberArgs: [
-    // '--require', 'timeout.js',
-        '--require', './tests/features/step_definitions/steps.js',
-        '--format', 'node_modules/cucumber-pretty',
-       '--format', 'json:reports/cucumber.json',
-    './tests/features/support/AccountDetail.feature',
-  ]
+require('nightwatch-cucumber')({
+  cucumberArgs: ['--require', './tests/admintool/step_definitions/.','--format', 'node_modules/cucumber-pretty', '--format', 'json:reports/cucumber.json', './tests/admintool/features/.']
 });
 
 module.exports = {
   output_folder: 'reports',
   custom_assertions_path: '',
+  page_objects_path: 'page_objects',
   live_output: false,
   disable_colors: false,
   selenium: {
@@ -50,7 +45,6 @@ module.exports = {
       end_session_on_fail : false,
     skip_testcases_on_fail : false,
     screenshots : {
-
           enabled : true,
           on_failure : true,
           on_error : true,
