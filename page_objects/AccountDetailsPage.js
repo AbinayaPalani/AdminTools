@@ -1,3 +1,4 @@
+
 module.exports = {
 
 
@@ -7,12 +8,13 @@ module.exports = {
     //   searchBar: 'input[name="p"]'
     // }
 
-    url: 'http://staging.jbilling.a-cti.com:8081/admintool?accountPin=43836dfe-bf2f-4180-ad91-7d830add5170&brandId=5a6e67a6-8bfd-45f5-a774-3462cb0c4e4c',
+   // url: 'http://staging.jbilling.a-cti.com:8081/admintool?accountPin=55e6a223-fb4d-49c6-be21-e447c1f5fc44&brandId=5a6e67a6-8bfd-45f5-a774-3462cb0c4e4c',
 
     elements :{
       body: 'body',
+     
         AccountDetailHeader: {
-            selector : ".//h4[@id='popupHeader']"
+            selector : "#popupHeader"
           },
           AccountDetailTitle : {
               selector : ".//a[@id='accountSummary']"
@@ -76,16 +78,17 @@ module.exports = {
           },
           revenueValue : {
               selector : ".//input[@id='revenue']"
-          }
-       
+          },
+    },
+           commands: [{
 
-        //   commands:[{
-
-            
-
-        //   }]
+            headerClick: () => {
+                return this.click('@AccountDetailHeader');
+            }
+    
+        }]
 
     
 
-    }
+  
 };

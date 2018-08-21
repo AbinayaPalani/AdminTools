@@ -4,11 +4,9 @@
   "description": "Cucumber night watch js",
   "main": "nightwatch.conf.js",
   "scripts": {
-
     "e2e": "npm-run-all e2e-test e2e-report --continue-on-error",
     "e2e-test": "nightwatch --config nightwatch.conf.js",
     "e2e-report": "node create-html-report.js"
-
   },
   "author": "Abinaya",
   "license": "ISC",

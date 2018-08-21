@@ -10,22 +10,33 @@
       {
         "id": "account-details;testing-the-account-detail-with-relevant-customer",
         "keyword": "Scenario",
-        "line": 3,
+        "line": 12,
         "name": "Testing the account detail with relevant customer",
         "tags": [],
         "type": "scenario",
         "steps": [
           {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 5,
-            "name": "I open the admin tool page",
+            "keyword": "Before",
+            "hidden": true,
             "match": {
-              "location": "tests/admintool/step_definitions/steps.js:7"
+              "location": "tests/admintool/CucumberHook/hooks.js:4"
             },
             "result": {
               "status": "passed",
-              "duration": 4139000000
+              "duration": 1008000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I open the admin tool page '55e6a223-fb4d-49c6-be21-e447c1f5fc44' and '5a6e67a6-8bfd-45f5-a774-3462cb0c4e4c'",
+            "match": {
+              "location": "tests/admintool/step_definitions/steps.js:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23188000000
             }
           },
           {
@@ -34,12 +45,12 @@
             "line": 6,
             "name": "validate the \"Account Details\" in header",
             "match": {
-              "location": "tests/admintool/step_definitions/steps.js:18"
+              "location": "tests/admintool/step_definitions/steps.js:20"
             },
             "result": {
               "status": "failed",
-              "duration": 1000000,
-              "error_message": "ReferenceError: expect is not defined\n    at World.<anonymous> (/Users/abinaya/Desktop/NightWatch/tests/admintool/step_definitions/steps.js:20:5)"
+              "duration": 174000000,
+              "error_message": "Failed [equal]: (Account Details text is not matching in UI, else there is a problem in it) - Expected \"[object Object]\" but got: \"Account Details\"; ERROR\n\n    at Object.<anonymous> (/Users/abinaya/Desktop/NightWatch/tests/admintool/step_definitions/steps.js:23:24)\n    at endReadableNT (_stream_readable.js:1064:12)\n\nERROR: Unable to locate element: \"#popupHeader\" using: css selector\n    at Proxy.<anonymous> (/Users/abinaya/Desktop/NightWatch/node_modules/nightwatch/lib/page-object/command-wrapper.js:117:25)\n    at World.<anonymous> (/Users/abinaya/Desktop/NightWatch/tests/admintool/step_definitions/steps.js:21:17)"
             },
             "embeddings": [
               {
@@ -52,9 +63,9 @@
             "arguments": [],
             "keyword": "When ",
             "line": 7,
-            "name": "hit the getUserByAccountPin service then get the data",
+            "name": "hit the getUserByAccountPin service then get the data with '55e6a223-fb4d-49c6-be21-e447c1f5fc44' and '5a6e67a6-8bfd-45f5-a774-3462cb0c4e4c'",
             "match": {
-              "location": "tests/admintool/step_definitions/steps.js:22"
+              "location": "tests/admintool/step_definitions/steps.js:28"
             },
             "result": {
               "status": "skipped"
@@ -66,10 +77,21 @@
             "line": 8,
             "name": "Through the response data to validate in account details",
             "match": {
-              "location": "tests/admintool/step_definitions/steps.js:26"
+              "location": "tests/admintool/step_definitions/steps.js:60"
             },
             "result": {
               "status": "skipped"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "tests/admintool/CucumberHook/hooks.js:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1008000000
             }
           }
         ]

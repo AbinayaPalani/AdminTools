@@ -5,14 +5,19 @@ var options = {
         jsonFile: 'reports/cucumber.json',
         output: 'reports/cucumber_report.html',
         reportSuiteAsScenarios: true,
-        launchReport: true,
+        launchReport: true,      
+        brandTitle:"Regression Testing",
+        columnLayout:[1,2],
+        storeScreenshots:true,
         metadata: {
-            "App Version":"0.3.2",
+            "App Version":"4.3.0",
             "Test Environment": "STAGING",
             "Browser": "Chrome  68.0.3440.42",
             //"Platform": "Windows 10",
             "Parallel": "Scenarios",
-            "Executed": "Remote"
+            "Executed": "Remote",
+            "columnLayout":[1,2]
+            
         }
     };
  

@@ -14,7 +14,7 @@ const chromedriver = require('chromedriver');
 
 
 require('nightwatch-cucumber')({
-  cucumberArgs: ['--require', './tests/admintool/step_definitions/.','--format', 'node_modules/cucumber-pretty', '--format', 'json:reports/cucumber.json', './tests/admintool/features/.']
+  cucumberArgs: ['--require', './tests/admintool/CucumberHook/hooks.js','--require', './tests/admintool/step_definitions/.','--format', 'node_modules/cucumber-pretty', '--format', 'json:reports/cucumber.json', '--format-options', '{"colorsEnabled":false}', './tests/admintool/features/AccountDetail.feature']
 });
 
 module.exports = {
