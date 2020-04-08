@@ -28,17 +28,40 @@ When('select the credit section and click create credit link', function () {
 
 When('Pass the necessary data to process the credit', function () {
 
+    var randomReasonList;
     return client.setValue('#popupEmail',"abinaya.palani@anywhere.co")
                 .setValue('#popupAmount',1.12)
-                .setValue('#popupReason',"Testing the credit adjustment")
                 .setValue('#popupDescription', "Automation credit Adjustment");
 
 });
 
-When('submit the credit', function () {
+When('select the reason list for credit', function(){
+    var randomReasonList;
+    return client.getLocationInView("#popupReasonDropDownButton").pause(1000).assert.visible('#popupReasonDropDownButton').click('#popupReasonDropDownButton').elements("css selector","ul#popupReasonList li", function(reasonList){
+        console.log("Reason List for Credit Page "+reasonList.value.length);
+        randomReasonList = Math.floor((Math.random() * reasonList.value.length) + 1);
+        console.log("Random number to pick the reason from the list"+randomReasonList);
 
-    return client.click("button[id='formSubmit']").
-    waitForElementVisible('#notification',50000)
+        if(randomReasonList === 16){
+            return client.getLocationInView('#popupReasonList li:nth-child('+randomReasonList+') a').pause(500).assert.visible('#popupReasonList li:nth-child('+randomReasonList+') a').click('#popupReasonList li:nth-child('+randomReasonList+') a')
+            .setValue('textarea#popupReason',"Testing the credit in the admin tool..!");
+        }
+        else
+        {
+            return client.getLocationInView('#popupReasonList li:nth-child('+randomReasonList+') a').pause(500).assert.visible('#popupReasonList li:nth-child('+randomReasonList+') a').click('#popupReasonList li:nth-child('+randomReasonList+') a');
+        }
+
+    })
+
+
+});
+
+
+Then('submit the credit', function () {
+
+    return client
+    .assert.visible('#formSubmit').pause(500).click("button[id='formSubmit']")
+    .waitForElementVisible('#notification',50000)
     .getText("p[id='notification']", function(notificationResult){
         console.log("Notification message : "+notificationResult.value);
     });

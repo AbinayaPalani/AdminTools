@@ -4,9 +4,8 @@
   "description": "Admin Tool - Regression",
   "main": "index.js",
   "scripts": {
-    "test:chrome": "cross-env browser=chrome npm test && npm run report",
-    "report":"node index.js",
-    "test": "cucumber-js  --tags '@Login or @accountDetail or @updateIndustry or @closefunc or @continueIndustry or @creditProcess or  @debitProcess or  @creditFormClear or @debitFormClear' --require-module babel-core/register --require ./cucumber.conf.js --require ./step-definitions --format node_modules/cucumber-pretty --format json:reports/cucumber.json"
+    "test:chrome": "cross-env NIGHTWATCH_ENV=chrome npm test",
+    "test": "cucumber-js --tags '@Login or @accountDetail  or @updateIndustry or @closefunc or @clearDelayBilling or @continueToChange or @alertToCancelDB or @delayBilling or @delayBillingToActive or  @creditProcess or @creditFormClear or @debitProcess or  @debitFormClear or  @accountTypes or @enableAllowAch' --require-module babel-core/register --require ./cucumber.conf.js --require ./step-definitions --format node_modules/cucumber-pretty --format json:reports/cucumber_report.json"
   },
   "repository": {
     "type": "git",
@@ -19,19 +18,19 @@
   },
   "homepage": "https://github.com/AbinayaPalani/NightWatch#readme",
   "dependencies": {
+    "async": "^3.1.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "chromedriver": "^2.46.0",
+    "chromedriver": "^80.0.1",
     "cross-env": "^5.2.0",
     "cucumber": "^5.1.0",
-    "cucumber-html-reporter": "^4.0.4",
+    "cucumber-html-reporter": "^5.0.0",
     "cucumber-pretty": "^1.5.0",
-    "nightwatch": "^1.0.19",
-    "nightwatch-api": "^2.1.1",
-    "request": "^2.88.0",
-    "selenium-server": "^3.141.59",
-    "selenium-server-standalone-jar": "^3.141.5",
-    "start-server-and-test": "^1.7.11"
+    "geckodriver": "^1.16.2",
+    "mkdirp": "^0.5.1",
+    "nightwatch": "^1.1.11",
+    "nightwatch-api": "^2.3.0",
+    "npm-run-all": "^4.1.5"
   }
 }

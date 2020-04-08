@@ -10,4 +10,4 @@ Feature: Login Page for CWA
 
         Examples:
             | userName                   | password |
-            | joshpin.albert@anywhere.co | password |
+            | abinaya.palani@anywhere.co | mani1798 |

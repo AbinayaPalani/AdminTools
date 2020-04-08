@@ -7,6 +7,7 @@ Feature: Debit functionality
         When check the debit section is present
         Then select the debit section and click create debit link
         And Pass the necessary data to process the debit
+        And select the reason list for debit
         Then submit the debit
 
     @debitFormClear
@@ -20,15 +21,15 @@ Feature: Debit functionality
         
     
 
- Scenario Outline: Debit Adjustment in live
+#  Scenario Outline: Debit Adjustment in live
 
-        Given Open the admin tool
-        When check the debit section is present
-        Then select the debit section
-        And select the debit section and click create debit link
-        Then  process the debit with "<debitAmount>"
-        Then submit the debit
+#         Given Open the admin tool
+#         When check the debit section is present
+#         Then select the debit section
+#         And select the debit section and click create debit link
+#         Then  process the debit with "<debitAmount>"
+#         Then submit the debit
 
-        Examples:
-            | debitAmount |
-            | 1            |
+#         Examples:
+#             | debitAmount |
+#             | 1            |

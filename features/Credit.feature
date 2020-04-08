@@ -7,7 +7,8 @@ Feature: Credit functionality
         When check the credit section is present
         Then select the credit section and click create credit link
         And Pass the necessary data to process the credit
-        Then submit the credit
+        And select the reason list for credit
+        Then submit the credit and handle if duplicate credit is present on it.
 
 
     @creditFormClear
@@ -21,15 +22,15 @@ Feature: Credit functionality
         
     
 
- Scenario Outline: Credit Adjustment in live
+#  Scenario Outline: Credit Adjustment in live
 
-        Given Open the admin tool
-        When check the credit section is present
-        Then select the credit section
-        And select the credit section and click create credit link
-        Then  process the credit with "<creditAmount>"
-        Then submit the credit
+#         Given Open the admin tool
+#         When check the credit section is present
+#         Then select the credit section
+#         And select the credit section and click create credit link
+#         Then  process the credit with "<creditAmount>"
+#         Then submit the credit
 
-        Examples:
-            | creditAmount |
-            | 1            |
+#         Examples:
+#             | creditAmount |
+#             | 1            |

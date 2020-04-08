@@ -19,6 +19,7 @@ Given('I open the page in CWA with {string} and {string}', function (string, str
                 .setValue('input[name="email"]', string)
                 .setValue('input[name="password"]', string2)
                 .click('button[class="button-primary "]');
+                scenario.attach('Login Page');
     
 });
 
@@ -29,8 +30,9 @@ When('fetch the account details in CWA', function () {
     
     return client
             .waitForElementVisible('#fetchAccountInput',100000)
-            .setValue('#fetchAccountInput',['8124251480',client.Keys.ENTER])
+            .setValue('#fetchAccountInput',['8954251517',client.Keys.ENTER])
             .keys(client.Keys.ENTER);
+            scenario.attach('Fetch the account');
                    
             
             
@@ -55,7 +57,7 @@ Then('select the billing page in CWA', function () {
 Then('click the Admin Tool section', function () {
 
     return client
-             .waitForElementVisible('button[class="nostyle admin-tool-btn"]',3000)
+             .waitForElementVisible('button[class="nostyle admin-tool-btn"]',8000)
              .click('button[class="nostyle admin-tool-btn"]');
 
 });

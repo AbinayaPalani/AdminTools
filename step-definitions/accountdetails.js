@@ -1,7 +1,11 @@
-const { client } = require('nightwatch-api');
 const { Given, Then, When } = require('cucumber');
-var request = require('request');
-var iframe_src, updatedIndustry;
+const { client } = require('nightwatch-api');
+var iframe_src, updatedIndustry, pageUrl, AccountPin, BrandId;
+var AccountInformationDetailResponse;
+var options;
+const requestInfo = require('./apiGet');
+
+
 
 
 //Scenario: Validating the account details
@@ -9,6 +13,8 @@ Given('Open the admin tool', function () {
 
 
     return client.frameParent().waitForElementVisible('#main > div.modal-window.openmodal.admin-tool-modal > div.modal-header > h3',5000);
+    
+   //requestInfo();
     // return client
     //           .assert.visible('#main > div.modal-window.openmodal.admin-tool-modal > div.modal-header > h3');
 
@@ -19,12 +25,12 @@ Then('validate the {string} in header', function (string) {
     console.log(string);
     console.log("Account Details");
     return client.waitForElementVisible('#adminTool',3000).getAttribute("iframe[id='adminTool']","src", function(srcUrl){
-        console.log(srcUrl.value);
-        iframe_src = srcUrl.value;
-    }).pause(5000).frame('adminTool').waitForElementVisible('#accountSummary',50000)
+        //console.log(srcUrl.value);
+        //iframe_src = srcUrl.value;
+    }).pause(10000).frame('adminTool').waitForElementVisible('#accountSummary',50000)
         .assert.containsText("#accountSummary", string);
     
-
+       
        
         
         
@@ -45,117 +51,69 @@ Then('validate the {string} in header', function (string) {
 });
 
 When('hit the getUserByAccountPin service and compare data with response data', function () {
+   
 
-    var pageUrl = "";
-        return client.url(function(result) {
-        pageUrl = result.value;
-
-        console.log(pageUrl);
-         
-        // client.getAttribute('#adminTool', src, function(result){
-
-        //     console.log("Iframe src value as "+src.value);
-        // });
-
-        console.log('IFRAME URL '+ iframe_src);
-            iframe_src = iframe_src.split('=');
-            var AccountPin = iframe_src[1].split("&")[0];
-            var BrandId = iframe_src[2].split("&")[0];
-            console.log("BrandId"+BrandId);
-            
-
-    if(pageUrl.includes('staging')){
-        request('https://staging.jbilling.a-cti.com:8443/v1/getUserByAccountPin/accountPin/'+AccountPin+'/brandId/'+BrandId, function (error, response, body) {
-        console.log('error:', error); // Print the error if one occurred
-        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-        console.log('body:', body); // Print the HTML for the Google homepage.
-
-        var responseBody = JSON.parse(body);
-        console.log(responseBody);
-        console.log(responseBody.user);
-        console.log(responseBody.user.primaryDetails['Account PIN']);
-       
-        if(Object.keys(responseBody.user.communicationAddress).includes('Statement Name 1')){
-        console.log(responseBody.user.communicationAddress['Statement Name 1']);
-        client.waitForElementVisible("#accountSummaryHolder > div:nth-child(1) > label",5000)
-        .waitForElementVisible('#teamName', 5000).getValue("#teamName", function(teamName){
-            console.log("**********************"+teamName.value);
-            this.assert.equal(teamName.value, responseBody.user.communicationAddress['Statement Name 1']);
-        });}
-        if(Object.keys(responseBody.user.primaryDetails).includes('primaryAccountNumber')){
-        client.getValue("input[id='primaryAccount']", function(accountNumber){
-         this.assert.equal(accountNumber.value, responseBody.user.primaryDetails['primaryAccountNumber']);
-        });}
-
-        // if(Object.keys(responseBody.user).includes('status')){
-        // client.getValue("input[id='userStatus']", function(status){
-        //     this.assert.equal(status.value,responseBody.user.status);
-        // });}
-
-
-        // if(Object.keys(responseBody.user.accountInfo).includes('Industry')){
-        // client.getValue("div[id='industryDiv']", function(industryValue){
-        //     console.log("**********Industry************"+industryValue.value);
-        // });}
+    return client.waitForElementVisible('#accountSummary',500,function(result){
         
-           
-          //  client.assert.valueContains('#industry', responseBody.user.accountInfo['Industry'], "Doesn't match the content in an Industry value")
-        
-        });    
-        
-        request('https://staging.jbilling.a-cti.com:8443/userReport/'+AccountPin, function (error, response, body) {
-
-            console.log('error:', error); // Print the error if one occurred
-            console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-            console.log('body:', body); // Print the HTML for the Google homepage.
-
-            var userReportResponse = JSON.parse(body);
-
-            if(Object.keys(userReportResponse.userInfo).includes('credit')){
-
-                client.expect.element('#totalCredits').text.to.contain(userReportResponse.userInfo.credit);
-            }
-            //console.log("Testing 1212121"+userReportResponse.userInfo['invoiceAmount']);
-            //console.log(userReportResponse.userInfo['invoiceAmount'] != null) ;
-            if(userReportResponse.userInfo['invoiceAmount'] != null && Object.keys(userReportResponse.userInfo).includes('invoiceAmount')){
-
-                client.expect.element('#totalInvoices').text.to.contain(userReportResponse.userInfo.invoiceAmount);
-            }
-
-            if(Object.keys(userReportResponse.userInfo).includes('refund')){
-                
-                client.expect.element('#totalRefunds').text.to.contain(userReportResponse.userInfo.refund);
-
-            }
-
-            if(Object.keys(userReportResponse.userInfo).includes('payment')){
-                
-                client.expect.element('#totalPayments').text.to.contain(userReportResponse.userInfo.payment);
-
-            }
-
+        const request = require("request");
+        const url = "https://my-json-server.typicode.com/edurekaDemo/noderequest/db";
+        request.get(url, (error, response, body) => {
+        let json = JSON.parse(body);
+        console.log(body);
         });
-    }
+        
+        // console.log('IFRAME URL '+ iframe_src);
 
 
-    else{
-        request('https://access.jbilling.a-cti.com/v1/getUserByAccountPin/accountPin/'+string+'/brandId/'+string2, function (error, response, body) {
-            console.log('error:', error); // Print the error if one occurred
-            console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-            console.log('body:', body); // Print the HTML for the Google homepage.
+        // iframe_src = iframe_src.split('=');
+        // AccountPin = iframe_src[1].split("&")[0];
+        // BrandId = iframe_src[2].split("&")[0];
+      
+        // console.log("1");
+      
+        //     console.log("2");
+        //     console.log("BrandId "+BrandId);
+        //     console.log("3");
+        //     console.log("Account Pin "+ AccountPin);
+        //     console.log("4");
+ });
+});
+ 
 
-        });
-    } 
+Then('validate the company name', function () {
+   
+     return client.assert.visible('input#teamName');
+    
+});
+
+
+Then('validate the primary account number', function () {
+
+    return client.assert.visible('input#primaryAccount');
+});
+
+Then('validate the account status', function () {
+
+    return client.assert.visible('input#userStatus');
 
 
 });
 
+
+Then('validate the industry value', function () {
+
+    return client.assert.visible('div#industryDiv');
 });
+
+
+
+
+
 
 // Scenario: Updating the industry value
 When('validating the hover of edit option', function () {
 
-    return client.frame('adminTool').assert.visible('#editOption button svg g#Page-1')
+    return client.frame('adminTool').assert.visible('#editOption button svg g#Page-1').pause(3000)
     .moveToElement('#editOption button svg g#Page-1',5,5);
 
 
@@ -164,7 +122,7 @@ When('validating the hover of edit option', function () {
 // Scenario: Updating the industry value
 When('validating the hover of edit option and should be in account summary page', function () {
 
-    return client.frame('adminTool').click("#accountSummary").assert.visible('#editOption button svg g#Page-1')
+    return client.frame('adminTool').assert.visible('#editOption button svg g#Page-1')
     .moveToElement('#editOption button svg g#Page-1',5,5);
 
 
@@ -173,7 +131,10 @@ When('validating the hover of edit option and should be in account summary page'
 
 Then('click the edit option', function () {
 
-    return client.pause(2000).click('#editOption button svg g#Page-1');
+  // return client.click('button.edit-single.nostyle');
+
+
+    return client.pause(2000).moveToElement('button.edit-single.nostyle',5,5).doubleClick();
 
 });
 
@@ -181,26 +142,28 @@ Then('typing and select the option in an industry', function () {
 
    
     var random;
-    return client.click('#industryButton').elements('css selector','#industryList li a', function(industryValue){
+    client.execute('var footerElements = document.getElementsByClassName("footer-partners");' +
+          'footerElements[0].scrollIntoView(true);')
+    return client.frame('adminTool').getLocationInView('button#industryButton').pause(3000).assert.visible('button#industryButton').click('button#industryButton').elements('css selector','#industryList li a', function(industryValue){
 
        
-        console.log(industryValue.value);
+        //console.log(industryValue.value);
         console.log(industryValue.value.length);
         random = Math.floor((Math.random() * industryValue.value.length) + 1);
-          client.getText('#industryList > li:nth-child('+random+') > a', function(industryinfo){
+           client.getText('#industryList > li:nth-child('+random+') > a', function(industryinfo){
             updatedIndustry = industryinfo.value;
-             client.setValue("input[id='industryInput']", industryinfo.value).click('#industryList > li:nth-child('+random+') > a');
+              client.setValue("input[id='industryInput']", industryinfo.value).click('#industryList > li:nth-child('+random+') > a');
 
          });
 
     });
 
-   
 });
 
 Then('update an industry', function () {
 
-    return client.click("button[id='formSubmit']").pause(3000);
+   return client.getLocationInView("button#formSubmit.submit_btn").pause(1000).assert.visible('#formSubmit').click('#formSubmit');
+
 
 });
 
@@ -210,7 +173,7 @@ Then('validate updated value', function () {
          .getText('#industryButton #industry', function(result){
 
                 console.log("################");
-                console.log(result.value);
+                console.log("Notification of Industry update"+result.value);
              
                 this.assert.equal(result.value, updatedIndustry);
             });
@@ -221,7 +184,11 @@ Then('validate updated value', function () {
 
 Then('click the close button and validate it', function () {
 
-    return client.click("button#formClear");
+
+
+    return client.getLocationInView("button#formSubmit.submit_btn").pause(1000).assert.visible('#formClear').click('#formClear');
+
+
 
 });
 
@@ -237,13 +204,14 @@ Then('select the random future date', function () {
     // var goLiveDate = ('0' + randomDate.getDate()).slice(-2)+""+('0' + (randomDate.getMonth()+1)).slice(-2)+""+randomDate.getFullYear()
     // console.log("GoLiveDate"+goLiveDate);
 
-    return client.pause(5000).setValue("input[id='goLiveDate']","27112019");
+    return client.setValue("input[id='goLiveDate']","27112019");
 
 });
 
 Then('udpate the golivedate', function () {
 
-    return client.click("button[id='formSubmit']").
+    return client.getLocationInView("#formSubmit.submit_btn")
+    .assert.visible('#formSubmit').click("button[id='formSubmit']").
              waitForElementVisible('#notification',50000)
              .getText("p[id='notification']", function(notificationResult){
                  console.log("Notification message : "+notificationResult.value);
