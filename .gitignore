@@ -1,0 +1,6 @@
+../node_modules
+*.log
+*/reports
+*/screenshots
+package-lock.json
+*/node_modules/yauzl/package.json
