@@ -29,7 +29,7 @@ When('select the credit section and click create credit link', function () {
 When('Pass the necessary data to process the credit', function () {
 
     var randomReasonList;
-    return client.setValue('#popupEmail',"abinaya.palani@anywhere.co")
+    return client.setValue('#popupURL',"https://wwww.google.com")
                 .setValue('#popupAmount',1.12)
                 .setValue('#popupDescription', "Automation credit Adjustment");
 

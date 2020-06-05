@@ -161,7 +161,7 @@ Then('check the transaction details for this account with successful status and 
 
 Then('Enter the details to process the refund transaction', function () {
 
-    return client.setValue('input#popupEmail.validate_blur','abinaya.palani@anywhere.co');
+    return client.setValue('input#popupURL.validate_blur','https://wwww.google.com');
 
 });
 
