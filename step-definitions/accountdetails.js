@@ -125,7 +125,6 @@ When('validating the hover of edit option and should be in account summary page'
     return client.frame('adminTool').assert.visible('#editOption button svg g#Page-1')
     .moveToElement('#editOption button svg g#Page-1',5,5);
 
-
 });
 
 
@@ -142,13 +141,13 @@ Then('typing and select the option in an industry', function () {
 
    
     var random;
-    client.execute('var footerElements = document.getElementsByClassName("footer-partners");' +
-          'footerElements[0].scrollIntoView(true);')
-    return client.frame('adminTool').getLocationInView('button#industryButton').pause(3000).assert.visible('button#industryButton').click('button#industryButton').elements('css selector','#industryList li a', function(industryValue){
+    // client.execute('var footerElements = document.getElementsByClassName("footer-partners");' +
+    //       'footerElements[0].scrollIntoView(true);')
+    return client.getLocationInView('button#industryButton').pause(3000).assert.visible('button#industryButton').click('button#industryButton').elements('css selector','#industryList li a', function(industryValue){
 
        
         //console.log(industryValue.value);
-        console.log(industryValue.value.length);
+        console.log("Testing"+industryValue.value.length);
         random = Math.floor((Math.random() * industryValue.value.length) + 1);
            client.getText('#industryList > li:nth-child('+random+') > a', function(industryinfo){
             updatedIndustry = industryinfo.value;
@@ -169,7 +168,7 @@ Then('update an industry', function () {
 
 Then('validate updated value', function () {
 
-    return client.waitForElementVisible('#notification',50000)
+    return client.waitForElementVisible('#notification',500000)
          .getText('#industryButton #industry', function(result){
 
                 console.log("################");
@@ -186,7 +185,7 @@ Then('click the close button and validate it', function () {
 
 
 
-    return client.getLocationInView("button#formSubmit.submit_btn").pause(1000).assert.visible('#formClear').click('#formClear');
+    return client.getLocationInView("button#formClear").pause(1000).assert.visible('#formClear').click('#formClear');
 
 
 
