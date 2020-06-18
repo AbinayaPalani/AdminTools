@@ -8,7 +8,7 @@ Feature: Change the status functionality
         Given Open the admin tool
         When select the status change
         Then get the current status in an account status, it should be Active or Active | Past Due or Active | Notice to Block or Active | Unpaid and choose the delay billing option
-        When pass relevant data
+        When select the period and pass note
         Then clear the process
 
 
@@ -41,7 +41,7 @@ Feature: Change the status functionality
         Given Open the admin tool
         When select the status change
         Then get the current status in an account status, it should be Active or Active | Past Due or Active | Notice to Block or Active | Unpaid and choose the delay billing option
-        When pass relevant data
+        When select the period and pass note
         Then submit the process
         And validate the status in account detail - "Active | Delay Billing"
 
@@ -77,7 +77,7 @@ Feature: Change the status functionality
         Given Open the admin tool
         When select the status change
         Then get the current status in an account status, it should be Active or Active | Past Due or Active | Notice to Block or Active | Unpaid and choose the Dormancy option
-        When pass relevant data
+        When select the period and pass note
         Then submit the process
         And validate the status in account detail - "Active | Dormancy"
 
@@ -115,7 +115,7 @@ Feature: Change the status functionality
 
         Given Open the admin tool
         When select the status change
-        Then get the current status in account status, it should be Active - Dormancy
+        Then get the current status in account status, it should be Active | Dormancy
         And select the option of return to service in change status to
         Then pass some data in notes for return to serivce from dormancy to Active
         And submit the process
@@ -222,7 +222,7 @@ Feature: Change the status functionality
 
 ### Move to Cancellation
 
-
+    @cancellation
     Scenario: Move to cancellation
 
         Given Open the admin tool
@@ -237,6 +237,7 @@ Feature: Change the status functionality
 
 ### Stop Cancellation
 
+    @stopCancellation
     Scenario: Move to stopCancellation
 
         Given Open the admin tool

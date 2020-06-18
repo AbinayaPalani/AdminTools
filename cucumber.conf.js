@@ -9,7 +9,7 @@ const {
 } = require('nightwatch-api');
 const reporter = require('cucumber-html-reporter');
 
-setDefaultTimeout(60000);
+setDefaultTimeout(90 * 1000);
 
 BeforeAll(async () => {
   await startWebDriver({ env: process.env.NIGHTWATCH_ENV || 'chromeHeadless' });
@@ -17,7 +17,7 @@ BeforeAll(async () => {
 });
 
 AfterAll(async () => {
-  await closeSession();
+  //await closeSession();
   await stopWebDriver();
   setTimeout(() => {
     reporter.generate({

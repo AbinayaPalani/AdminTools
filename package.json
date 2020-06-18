@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:chrome": "cross-env NIGHTWATCH_ENV=chrome npm test",
-    "test": "cucumber-js --tags '@Login or @accountDetail or @updateIndustry or @closefunc or @duplicateCreditSubmit or @debitFormClear or @accountTypes or @enableAllowAch' --require-module @babel/register --require ./cucumber.conf.js --require ./step-definitions --format node_modules/cucumber-pretty --format json:reports/cucumber_report.json",
+    "test": "cucumber-js --tags '@Login or @accountDetail or @updateIndustry or @closefunc or @delayBilling or @delayBillingToActive' --require-module @babel/register --require ./cucumber.conf.js --require ./step-definitions --format node_modules/cucumber-pretty --format json:reports/cucumber_report.json",
     "debug": "cross-env DEBUG=nightwatch-api NIGHTWATCH_ENV=chrome NIGHTWATCH_VERBOSE=true node --inspect ./node_modules/cucumber/bin/cucumber-js --require-module @babel/register --require cucumber.conf.js --require step-definitions --format node_modules/cucumber-pretty"
   },
   "repository": {
