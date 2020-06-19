@@ -30,7 +30,7 @@ When('fetch the account details in CWA', function () {
     
     return client
             .waitForElementVisible('#fetchAccountInput',100000)
-            .setValue('#fetchAccountInput',['9223300347',client.Keys.ENTER])
+            .setValue('#fetchAccountInput',['7011011030',client.Keys.ENTER])
             .keys(client.Keys.ENTER);
             scenario.attach('Fetch the account');
                    

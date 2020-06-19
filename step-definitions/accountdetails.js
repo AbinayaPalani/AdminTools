@@ -12,7 +12,7 @@ const requestInfo = require('./apiGet');
 Given('Open the admin tool', function () {
 
 
-    return client.frameParent().waitForElementVisible('#main > div.modal-window.openmodal.admin-tool-modal > div.modal-header > h3',5000);
+    return client.frameParent().waitForElementVisible('#main div.modal-window.openmodal.admin-tool-modal div.modal-header h3',5000);
     
    //requestInfo();
     // return client
