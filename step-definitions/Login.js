@@ -16,8 +16,11 @@ Given('I open the page in CWA with {string} and {string}', function (string, str
 
     return client.url('https://staging.access.answerconnect.com/')
                 .waitForElementVisible('body',1000000)
+                .waitForElementVisible('input[name="email"]')
                 .setValue('input[name="email"]', string)
+                .waitForElementVisible('input[name="password"]')
                 .setValue('input[name="password"]', string2)
+                .waitForElementVisible('button[class="button-primary "]')
                 .click('button[class="button-primary "]')
                 .waitForElementVisible('#fetchAccountInput',10000000)
                 .setValue('#fetchAccountInput',['7011011030',client.Keys.ENTER])
