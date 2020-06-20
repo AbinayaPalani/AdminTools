@@ -18,7 +18,8 @@ Given('I open the page in CWA with {string} and {string}', function (string, str
                 .waitForElementVisible('body',1000000)
                 .setValue('input[name="email"]', string)
                 .setValue('input[name="password"]', string2)
-                .click('button[class="button-primary "]');
+                .click('button[class="button-primary "]'
+                .waitForElementVisible('#fetchAccountInput',10000000));
             
     
 });
