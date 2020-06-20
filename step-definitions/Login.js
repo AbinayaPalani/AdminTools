@@ -15,11 +15,11 @@ var config = require('../nightwatch.conf.js');
 Given('I open the page in CWA with {string} and {string}', function (string, string2) {
 
     return client.url('https://staging.access.answerconnect.com')
-                .waitForElementVisible('body',1000)
+                .waitForElementVisible('body',1000000)
                 .setValue('input[name="email"]', string)
                 .setValue('input[name="password"]', string2)
                 .click('button[class="button-primary "]');
-                scenario.attach('Login Page');
+            
     
 });
 
@@ -28,11 +28,15 @@ Given('I open the page in CWA with {string} and {string}', function (string, str
 When('fetch the account details in CWA', function () {
 
     
+    console.log("Am here");
+    
     return client
-            .waitForElementVisible('#fetchAccountInput',100000)
+            .waitForElementVisible('#fetchAccountInput',10000000)
             .setValue('#fetchAccountInput',['7011011030',client.Keys.ENTER])
             .keys(client.Keys.ENTER);
-            scenario.attach('Fetch the account');
+
+    console.log("Stopped");
+           
                    
             
             
