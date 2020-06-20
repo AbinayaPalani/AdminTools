@@ -31,7 +31,7 @@ When('fetch the account details in CWA', function () {
     console.log("Am here");
 
     client.url(function(result){
-        console.log("Test "+ result);
+        console.log("Test "+ result.value);
     });   
 
      client
@@ -53,8 +53,8 @@ Then('select the billing page in CWA', function () {
      client
              .waitForElementVisible('ul[id="search_Result"] li',50000)
             .click('ul[id="search_Result"] li')
-            .waitForElementVisible('li[id="billing-path"]',50000)
-            .click('li[id="billing-path"]');
+            .waitForElementVisible('li[id="billing"]',50000)
+            .click('li[id="billing"]');
             
 
     
