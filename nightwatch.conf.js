@@ -26,7 +26,7 @@ module.exports = {
         'goog:chromeOptions': {
           excludeSwitches: ['enable-automation'],
           w3c: false,
-          args: ["headless","disable-gpu","window-size=1920,1080","--disable-notifications"],
+          args: ["headless","disable-gpu","window-size=1920,1080","--disable-notifications",'--enable-features=NetworkService,NetworkServiceInProcess'],
           "prefs" : {
             "credentials_enable_service" : false,
             "profile.password_manager_enabled" : false
@@ -46,7 +46,7 @@ module.exports = {
         chromeOptions: {
           excludeSwitches: ['enable-automation'],
           w3c: false,
-          args: ["disable-gpu","start-fullscreen","--disable-notifications"],
+          args: ["disable-gpu","start-fullscreen","--disable-notifications",'--enable-features=NetworkService,NetworkServiceInProcess'],
           "prefs" : {
             "credentials_enable_service" : false,
             "profile.password_manager_enabled" : false
