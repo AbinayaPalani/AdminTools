@@ -23,8 +23,14 @@ module.exports = {
         browserName: 'chrome',
         javascriptEnabled: true,
         acceptSslCerts: true,
-        chromeOptions: {
-          args: ['headless', 'disable-gpu']
+        'goog:chromeOptions': {
+          excludeSwitches: ['enable-automation'],
+          w3c: false,
+          args: ["headless","disable-gpu","window-size=1920,1080","--disable-notifications"],
+          "prefs" : {
+            "credentials_enable_service" : false,
+            "profile.password_manager_enabled" : false
+          }
         }
       }
     },
@@ -37,7 +43,7 @@ module.exports = {
         browserName: 'chrome',
         javascriptEnabled: true,
         acceptSslCerts: true,
-        'goog:chromeOptions': {
+        chromeOptions: {
           excludeSwitches: ['enable-automation'],
           w3c: false,
           args: ["disable-gpu","start-fullscreen","--disable-notifications"],
