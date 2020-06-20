@@ -15,7 +15,7 @@ var config = require('../nightwatch.conf.js');
 Given('I open the page in CWA with {string} and {string}', function (string, string2) {
 
      return client.url('https://staging.access.answerconnect.com/')
-                .waitForElementVisible('body',1000000)
+                .waitForElementVisible("body[id='brand-answerconnectuk']",1000000)
                 .waitForElementVisible('input[name="email"]')
                 .setValue('input[name="email"]', string)
                 .waitForElementVisible('input[name="password"]')
