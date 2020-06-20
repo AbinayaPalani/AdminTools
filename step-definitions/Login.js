@@ -12,7 +12,7 @@ var config = require('../nightwatch.conf.js');
 // Scenario: Login page and fetch the account # features/Login.feature:12
 
 
-Given('I open the page in CWA with {string} and {string}', function (string, string2) {
+Given(/I open the page in CWA with {string} and {string}/, function (string, string2) {
 
     return client.url('https://staging.access.answerconnect.com/')
                 .waitForElementVisible('body',1000000)
@@ -32,7 +32,7 @@ Given('I open the page in CWA with {string} and {string}', function (string, str
 
 
 
-When('fetch the account details in CWA', function () {
+When(/fetch the account details in CWA/, function () {
 
     
     console.log("Am here");
@@ -54,7 +54,7 @@ When('fetch the account details in CWA', function () {
 });
 
 
-Then('select the billing page in CWA', function () {
+Then(/select the billing page in CWA/, function () {
 
 
      return client
@@ -69,7 +69,7 @@ Then('select the billing page in CWA', function () {
 
 
 
-Then('click the Admin Tool section', function () {
+Then(/click the Admin Tool section/, function () {
 
     return client
              .waitForElementVisible('button[class="nostyle admin-tool-btn"]',8000)
