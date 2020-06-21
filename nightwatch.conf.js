@@ -1,8 +1,9 @@
 const chromedriver = require('chromedriver');
 const geckodriver = require('geckodriver');
+const seleniumServer = require('selenium-server-standalone-jar');
 
 module.exports = {
-  silent: !process.env.NIGHTWATCH_VERBOSE,
+  silent: !process.env.NIGHTWATCH_VERBOSE,  
   test_settings: {
     default: {
       webdriver: {
@@ -57,13 +58,15 @@ module.exports = {
     firefox: {
       webdriver: {
         server_path: geckodriver.path,
-        cli_args: ['--port', '4123', '--log', 'debug']
+        cli_args: ['--log', 'debug'],
+        "port": 4121
       },
       desiredCapabilities: {
         browserName: 'firefox',
         javascriptEnabled: true,
         acceptSslCerts: true,
-        marionette: true
+        marionette: true,
+        acceptInsecureCerts: true
       }
     }
   }

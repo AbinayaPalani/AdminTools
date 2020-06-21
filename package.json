@@ -4,6 +4,7 @@
   "description": "Admin Tool - Regression",
   "main": "index.js",
   "scripts": {
+    "test:firefox": "NIGHTWATCH_ENV=firefox npm test",
     "test:chrome": "cross-env NIGHTWATCH_ENV=chrome npm test",
     "test:chromeHeadless": "cross-env NIGHTWATCH_ENV=chromeHeadless npm test",
     "test": "cucumber-js --tags '@Login' --require-module @babel/register --require ./cucumber.conf.js --require ./step-definitions --format node_modules/cucumber-pretty --format json:reports/cucumber_report.json",
@@ -20,7 +21,8 @@
   },
   "homepage": "https://github.com/AbinayaPalani/NightWatch#readme",
   "dependencies": {
-    "async": "^3.1.0"
+    "async": "^3.1.0",
+    "selenium-server-standalone-jar": "^3.141.59"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",

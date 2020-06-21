@@ -12,12 +12,12 @@ const reporter = require('cucumber-html-reporter');
 setDefaultTimeout(100 * 1000);
 
 BeforeAll(async () => {
-  await startWebDriver({ env: process.env.NIGHTWATCH_ENV || 'chromeHeadless' });
+  await startWebDriver({ env: process.env.NIGHTWATCH_ENV || 'firefox' });
   await createSession();
 });
 
 AfterAll(async () => {
-  //await closeSession();
+  await closeSession();
   await stopWebDriver();
   setTimeout(() => {
     reporter.generate({

@@ -21,11 +21,8 @@ Given('I open the page in CWA with {string} and {string}', function (string, str
                 .waitForElementVisible('input[name="password"]')
                 .setValue('input[name="password"]', string2)
                 .waitForElementVisible('button[class="button-primary "]')
-                .click('button[class="button-primary "]')
-                .waitForElementVisible('#fetchAccountInput',10000000)
-                .setValue('#fetchAccountInput',['7011011030',client.Keys.ENTER])
-                .keys(client.Keys.ENTER);
-   
+                .click('button[class="button-primary "]');
+                
             
     
 });
@@ -35,16 +32,16 @@ Given('I open the page in CWA with {string} and {string}', function (string, str
 When('fetch the account details in CWA', function () {
 
     
-    console.log("Am here");
+  //  console.log("Am here");
 
     // return client.url(function(result){
     //     console.log("Test "+ result.value);
     // });   
 
-    //  return client
-    //         .waitForElementVisible('#fetchAccountInput',10000000)
-    //         .setValue('#fetchAccountInput',['7011011030',client.Keys.ENTER])
-    //         .keys(client.Keys.ENTER);
+     return client
+            .waitForElementVisible('#fetchAccountInput',10000)
+            .setValue('#fetchAccountInput',['7011011030',client.Keys.ENTER])
+            .keys(client.Keys.ENTER);
 
     // console.log("Stopped");
            
