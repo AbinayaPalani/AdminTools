@@ -8,7 +8,7 @@ module.exports = {
     default: {
       webdriver: {
         start_process: true,
-        port: 4123
+        port: 4129
       },
       screenshots: {
         enabled: true,
@@ -18,7 +18,7 @@ module.exports = {
     chromeHeadless: {
       webdriver: {
         server_path: chromedriver.path,
-        cli_args: ['--port=4123']
+        cli_args: ['--port=4129']
       },
       desiredCapabilities: {
         browserName: 'chrome',
@@ -38,7 +38,7 @@ module.exports = {
     chrome: {
       webdriver: {
         server_path: chromedriver.path,
-        cli_args: ['--port=4123']
+        cli_args: ['--port=4129']
       },
       desiredCapabilities: {
         browserName: 'chrome',
@@ -59,8 +59,8 @@ module.exports = {
       webdriver: {
         server_path: geckodriver.path,
         cli_args: ['--log', 'debug'],
-        "webdriver.gecko.driver" : "./bin/geckodriver",
-        "port": 4121
+        "webdriver.gecko.driver" : geckodriver.path,
+        "port": 4129
       },
       desiredCapabilities: {
         browserName: 'firefox',
