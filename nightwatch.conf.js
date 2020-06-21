@@ -17,7 +17,7 @@ module.exports = {
     },
     chromeHeadless: {
       webdriver: {
-        server_path: chromedriver.path,
+        server_path: 'node_modules/.bin/chromedriver',
         cli_args: ['--port=4129']
       },
       desiredCapabilities: {
