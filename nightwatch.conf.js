@@ -59,6 +59,7 @@ module.exports = {
       webdriver: {
         server_path: geckodriver.path,
         cli_args: ['--log', 'debug'],
+        "webdriver.gecko.driver" : "./bin/geckodriver",
         "port": 4121
       },
       desiredCapabilities: {

@@ -40,7 +40,8 @@ When('fetch the account details in CWA', function () {
 
      return client
             .waitForElementVisible('#fetchAccountInput',10000)
-            .setValue('#fetchAccountInput',['7011011030',client.Keys.ENTER])
+            .setValue('#fetchAccountInput','7011011030')
+            .keys(client.Keys.ENTER)
             .keys(client.Keys.ENTER);
 
     // console.log("Stopped");
