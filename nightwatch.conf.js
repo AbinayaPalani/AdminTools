@@ -57,9 +57,9 @@ module.exports = {
     },
     firefox: {
       webdriver: {
-        server_path: geckodriver.path,
+        start_process: true,
+        server_path: 'node_modules/.bin/geckodriver',
         cli_args: ['--log', 'debug'],
-        "webdriver.gecko.driver" : geckodriver.path,
         "port": 4129
       },
       desiredCapabilities: {
