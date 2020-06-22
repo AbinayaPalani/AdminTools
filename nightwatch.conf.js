@@ -3,6 +3,7 @@ const geckodriver = require('geckodriver');
 const seleniumServer = require('selenium-server-standalone-jar');
 
 module.exports = {
+  src_folders : ["step-definitions"],
   silent: !process.env.NIGHTWATCH_VERBOSE,  
   test_settings: {
     default: {

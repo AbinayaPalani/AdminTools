@@ -12,9 +12,9 @@ var config = require('../nightwatch.conf.js');
 // Scenario: Login page and fetch the account # features/Login.feature:12
 
 
-Given('I open the page in CWA with {string} and {string}', function (string, string2) {
+Given('I open the page in CWA with {string} and {string}', async (string, string2) => {
 
-     return client.url('https://staging.access.answerconnect.com/')
+    await client.url('https://staging.access.answerconnect.com/')
                 .waitForElementVisible("body[id='brand-answerconnectuk']",1000000)
                 .waitForElementVisible('input[name="email"]')
                 .setValue('input[name="email"]', string)
@@ -29,7 +29,7 @@ Given('I open the page in CWA with {string} and {string}', function (string, str
 
 
 
-When('fetch the account details in CWA', function () {
+When('fetch the account details in CWA', async () => {
 
     
   //  console.log("Am here");
@@ -38,7 +38,7 @@ When('fetch the account details in CWA', function () {
     //     console.log("Test "+ result.value);
     // });   
 
-     return client
+    await client
             .waitForElementVisible('#fetchAccountInput',10000)
             .setValue('#fetchAccountInput','7011011030')
             .keys(client.Keys.ENTER)
@@ -52,10 +52,10 @@ When('fetch the account details in CWA', function () {
 });
 
 
-Then('select the billing page in CWA', function () {
+Then('select the billing page in CWA', async () => {
 
 
-      return client
+    await client
              .waitForElementVisible('ul[id="search_Result"] li',50000)
             .click('ul[id="search_Result"] li')
             .waitForElementVisible('li[id="billing"]',50000)
@@ -67,9 +67,9 @@ Then('select the billing page in CWA', function () {
 
 
 
-Then('click the Admin Tool section', function () {
+Then('click the Admin Tool section', async () => {
 
-     return client
+    await client
              .waitForElementVisible('button[class="nostyle admin-tool-btn"]',8000)
              .click('button[class="nostyle admin-tool-btn"]');
 
