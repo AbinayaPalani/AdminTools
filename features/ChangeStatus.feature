@@ -11,7 +11,6 @@ Feature: Change the status functionality
         When select the period and pass note
         Then clear the process
 
-
     @continueToChange
     Scenario: check the alert for continue to change the someother page  while in DELAY-BILLING section
 

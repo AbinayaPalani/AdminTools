@@ -1,6 +1,5 @@
 const chromedriver = require('chromedriver');
 const geckodriver = require('geckodriver');
-const seleniumServer = require('selenium-server-standalone-jar');
 
 module.exports = {
   src_folders : ["step-definitions"],
@@ -9,7 +8,7 @@ module.exports = {
     default: {
       webdriver: {
         start_process: true,
-        port: 4129
+        port: 4119
       },
       screenshots: {
         enabled: true,
@@ -19,7 +18,7 @@ module.exports = {
     chromeHeadless: {
       webdriver: {
         server_path: 'node_modules/.bin/chromedriver',
-        cli_args: ['--port=4129']
+        cli_args: ['--port=4119']
       },
       desiredCapabilities: {
         browserName: 'chrome',
@@ -39,7 +38,7 @@ module.exports = {
     chrome: {
       webdriver: {
         server_path: chromedriver.path,
-        cli_args: ['--port=4129']
+        cli_args: ['--port=4119']
       },
       desiredCapabilities: {
         browserName: 'chrome',
@@ -61,7 +60,7 @@ module.exports = {
         start_process: true,
         server_path: 'node_modules/.bin/geckodriver',
         cli_args: ['--log', 'debug'],
-        "port": 4129
+        "port": 4119
       },
       desiredCapabilities: {
         browserName: 'firefox',

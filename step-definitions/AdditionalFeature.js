@@ -24,7 +24,7 @@ Then('Check whether any account type value is choosen or not and get the informa
 Then('Choose the needed account type', function () {
 
 
-    return client.useXpath().waitForElementPresent("//span[@id='accountType']",5000)
+    return client.useXpath().waitForElementPresent("//span[@id='accountType']",5000).pause(2000)
                  .click('css selector','button#accountTypeButton span#accountType').elements('css selector','#accountTypeList li a', function(accountTypeList){
 
                    randomAccountType = Math.floor((Math.random() * accountTypeList.value.length) + 1);
@@ -200,3 +200,16 @@ Then('Disable the exclude collection option', function () {
    
    
 });
+
+
+
+Then('clear the data', function () {
+    
+    
+        return client.getLocationInView("button#formClear")
+        .assert.visible('button#formClear').pause(500)
+        .click("button[id='formClear']");
+        
+        //return client.waitForElementPresent('div#alertTableDiv',5000).waitForElementPresent('button#moveToPage').click('button#moveToPage');
+        
+    });

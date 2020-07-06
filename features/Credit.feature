@@ -1,5 +1,7 @@
 
 Feature: Credit functionality
+
+
     @creditProcess
     Scenario: process the Credit Adjustment
 
@@ -10,14 +12,14 @@ Feature: Credit functionality
         And select the reason list for credit
         Then submit the credit 
 
-
     @creditFormClear
     Scenario: clear the credit information
 
-         Given Open the admin tool
+        Given Open the admin tool
         When check the credit section is present
-        Then select the credit section and click create credit link
+        #Then select the credit section and click create credit link
         And Pass the necessary data to process the credit
+        And select the reason list for credit
         Then clear the data
         
 
@@ -27,10 +29,11 @@ Feature: Credit functionality
 
         Given Open the admin tool
         When check the credit section is present
-        Then select the credit section and click create credit link
+       # Then select the credit section and click create credit link
         And Pass the necessary data to process the credit
         And select the reason list for credit
-        Then submit the credit and handle if duplicate credit is present so process the credit
+        Then submit the credit
+        Then handle if duplicate credit is present so process the credit
 
 
     @duplicateCreditCancel

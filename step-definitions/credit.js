@@ -30,7 +30,7 @@ When('Pass the necessary data to process the credit', function () {
 
     var randomReasonList;
     return client.setValue('#popupURL',"https://wwww.google.com")
-                .setValue('#popupAmount',1.12)
+                .setValue('#popupAmount',0.56)
                 .setValue('#popupDescription', "Automation credit Adjustment");
 
 });
@@ -60,31 +60,32 @@ When('select the reason list for credit', function(){
 
 Then('submit the credit', function () {
 
-
+    return client.getLocationInView("button#formSubmit.submit_btn").pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(2000);
     
-    return client
-    .assert.visible('#formSubmit').pause(500).click("button[id='formSubmit']")
-    .waitForElementVisible('#notification',50000)
-    .getText("p[id='notification']", function(notificationResult){
-        console.log("Notification message : "+notificationResult.value);
-    });
+    
+    // return client
+    // .assert.visible('#formSubmit').pause(500).click("button[id='formSubmit']")
+    // .waitForElementVisible('#notification',50000)
+    // .getText("p[id='notification']", function(notificationResult){
+    //     console.log("Notification message : "+notificationResult.value);
+    // });
 
 });
 
 
-Then('submit the credit and handle if duplicate credit is present so process the credit', function (){
+Then('handle if duplicate credit is present so process the credit', function (){
 
 
-    return client.assert.visible('#formSubmit').pause(500).click("button[id='formSubmit']").waitForElementPresent('div#alertTableDiv',5000).waitForElementPresent('button#moveToPage').click('button#moveToPage');
+    return client.pause(1000).waitForElementPresent('div#alertTableDiv.alertTableDiv',5000).waitForElementPresent('div#buttonWrapper button#moveToPage').click('div#buttonWrapper button#moveToPage').pause(3000);
 
 });
 
-Then('submit the credit and handle if duplicate credit is present so cancel the credit', function (){
+// Then('submit the credit and handle if duplicate credit is present so cancel the credit', function (){
 
-    return client.assert.visible('#formSubmit').pause(500).click("button[id='formSubmit']").waitForElementPresent('div#alertTableDiv',5000).waitForElementPresent('button#stayOnPage').click('button#stayOnPage');
+//     return client.assert.visible('#formSubmit').pause(500).click("button[id='formSubmit']").waitForElementPresent('div#alertTableDiv',5000).waitForElementPresent('button#stayOnPage').click('button#stayOnPage');
     
 
-});
+// });
 
 
 
@@ -95,4 +96,5 @@ Then('submit the credit and handle if duplicate credit is present so cancel the 
 // When('clear the data', function () {
 
 //     return client.click("button[id='formClear']");
+//     client.pause(500);
 // });

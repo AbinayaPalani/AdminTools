@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test:firefox": "NIGHTWATCH_ENV=firefox npm test",
-    "test:chrome": "cross-env NIGHTWATCH_ENV=chrome npm test",
-    "test:chromeHeadless": "cross-env NIGHTWATCH_ENV=chromeHeadless npm test",
-    "test": "cucumber-js --tags '@Login' --require-module @babel/register --require ./cucumber.conf.js --require ./step-definitions --format node_modules/cucumber-pretty --format json:reports/cucumber_report.json",
+    "test:chrome": "NIGHTWATCH_ENV=chrome npm test",
+    "test:chromeHeadless": "NIGHTWATCH_ENV=chromeHeadless npm test",
+    "test": "cucumber-js --tags '@Login or @accountDetail or @updateIndustry or @closefunc or @creditFormClear or @creditProcess or @duplicateCreditSubmit or @debitProcess or @debitFormClear or @refundProcessWithPartialAmount or  @accountType' --require-module @babel/register --require ./cucumber.conf.js --require ./step-definitions --format node_modules/cucumber-pretty --format json:reports/cucumber_report.json",
     "debug": "cross-env DEBUG=nightwatch-api NIGHTWATCH_ENV=chrome NIGHTWATCH_VERBOSE=true node --inspect ./node_modules/cucumber/bin/cucumber-js --require-module @babel/register --require cucumber.conf.js --require step-definitions --format node_modules/cucumber-pretty"
   },
   "repository": {
@@ -21,8 +21,7 @@
   },
   "homepage": "https://github.com/AbinayaPalani/NightWatch#readme",
   "dependencies": {
-    "async": "^3.1.0",
-    "selenium-server-standalone-jar": "^3.141.59"
+    "async": "^3.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -35,9 +34,8 @@
     "cucumber-pretty": "^6.0.0",
     "geckodriver": "^1.19.1",
     "mkdirp": "^1.0.4",
-    "nightwatch": "^1.3.5",
+    "nightwatch": "^1.3.6",
     "nightwatch-api": "^3.0.1",
-    "npm-run-all": "^4.1.5",
-    "selenium-standalone": "^6.17.0"
+    "npm-run-all": "^4.1.5"
   }
 }

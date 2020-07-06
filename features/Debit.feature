@@ -1,27 +1,28 @@
 
 Feature: Debit functionality
-    @debitProcess
-    Scenario: process the Debit Adjustment
 
-        Given Open the admin tool
-        When check the debit section is present
-        Then select the debit section and click create debit link
-        And Pass the necessary data to process the debit
-        And select the reason list for debit
-        Then submit the debit
 
-    @debitFormClear
+@debitFormClear
     Scenario: clear the debit information
 
          Given Open the admin tool
         When check the debit section is present
         Then select the debit section and click create debit link
         And Pass the necessary data to process the debit
+        And select the reason list for debit
         Then clear the data
+
+
+    @debitProcess
+    Scenario: process the Debit Adjustment
+
+        Given Open the admin tool
+        When check the debit section is present
+       ## Then select the debit section and click create debit link
+        And Pass the necessary data to process the debit
+        And select the reason list for debit
+        Then submit the debit
         
-
-
-
     @duplicateDebitSubmit
     Scenario: process the Debit Adjustment with duplicate Debit amount
 

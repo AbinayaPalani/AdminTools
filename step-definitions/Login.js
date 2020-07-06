@@ -12,14 +12,14 @@ var config = require('../nightwatch.conf.js');
 // Scenario: Login page and fetch the account # features/Login.feature:12
 
 
-Given('I open the page in CWA with {string} and {string}', async (string, string2) => {
+Given('I open the page in CWA with {string}', async (string) => {
 
     await client.url('https://staging.access.answerconnect.com/')
                 .waitForElementVisible("body[id='brand-answerconnectuk']",1000000)
                 .waitForElementVisible('input[name="email"]')
                 .setValue('input[name="email"]', string)
                 .waitForElementVisible('input[name="password"]')
-                .setValue('input[name="password"]', string2)
+                .setValue('input[name="password"]', "mani1798")
                 .waitForElementVisible('button[class="button-primary "]')
                 .click('button[class="button-primary "]');
                 
@@ -40,7 +40,7 @@ When('fetch the account details in CWA', async () => {
 
     await client
             .waitForElementVisible('#fetchAccountInput',10000)
-            .setValue('#fetchAccountInput','7011011030')
+            .setValue('#fetchAccountInput','kywuvif@dropjar.com')
             .keys(client.Keys.ENTER)
             .keys(client.Keys.ENTER);
 
