@@ -4,7 +4,7 @@ const { Given, Then, When } = require('cucumber');
 
 When('Check the account type is visible or present', function () {
 
-    return client.frame('adminTool').useXpath().waitForElementPresent("//ul[@class='settings']/li/h5[contains(text(),'Account Type')]");
+    return client.frame('adminTool').assert.visible('ul#sidebar_settings li:nth-child(2) h5');
 
    // return client.frame('adminTool').assert.waitForElementPresent("//ul[@class='settings']/li/h5[contains(text(),'Account Type')]");
    
@@ -15,19 +15,22 @@ var randomAccountType;
 Then('Check whether any account type value is choosen or not and get the information of the account Type', function(){
 
 
-    return client.waitForElementPresent("//span[@id='accountType']",5000).getText('css selector', "//span[@id='accountType']", function(result) {
+    return client.waitForElementPresent("button#accountTypeButton span#accountType",5000).getText('css selector', "button#accountTypeButton span#accountType", function(result) {
         console.log('getText result', result.value);
       });
 
 });
 
 Then('Choose the needed account type', function () {
+    var randomAccountType;
+    return client.getLocationInView("button#accountTypeButton span#accountType").
+    pause(1000).assert.visible('button#accountTypeButton span#accountType').
+    click('button#accountTypeButton span#accountType').elements("css selector","#accountTypeList li a", function(reasonList){
+        
+   // return client.waitForElementPresent("button#accountTypeButton span#accountType",5000).pause(2000)
+                // .click('css selector','button#accountTypeButton span#accountType').elements('css selector','#accountTypeList li a', function(accountTypeList){
 
-
-    return client.useXpath().waitForElementPresent("//span[@id='accountType']",5000).pause(2000)
-                 .click('css selector','button#accountTypeButton span#accountType').elements('css selector','#accountTypeList li a', function(accountTypeList){
-
-                   randomAccountType = Math.floor((Math.random() * accountTypeList.value.length) + 1);
+                    randomAccountType = Math.floor((Math.random() * reasonList.value.length) + 1);
 
                    console.log("Random number to select the account type : "+randomAccountType);
 
@@ -36,7 +39,6 @@ Then('Choose the needed account type', function () {
                         
                 });
 
-              return client.waitForElementPresent('#notification', 5000);
 
    
 });
@@ -70,7 +72,7 @@ return client.getText('css selector','#accountTypeList li a', function(AccountTy
 
 When('Check whether the AutoUpgrade is present or visible, it should not show for prepaid customer', function () {
 
-    return client.frame('adminTool').useXpath().waitForElementPresent("//ul[@class='settings']/li/h5[contains(text(),'Auto Upgrade')]");
+    return client.frame('adminTool').waitForElementPresent("ul#sidebar_settings li#autoUpgradeToogle_li");
                 
    
 });
@@ -97,7 +99,7 @@ Then('Disable the autoupgrade option in admintool', function () {
 
 When('Check whether the allow ach is present or visible', function () {
 
-    return client.frame('adminTool').useXpath().waitForElementPresent("//ul[@class='settings']/li/h5[contains(text(),'Allow ACH')]");
+    return client.frame('adminTool').waitForElementPresent("ul#sidebar_settings li#allowACHtoogle_li h5");
 
    
 });
@@ -147,7 +149,7 @@ Then('Enable or disable the allow ach option and set the value and then cancel t
 
 When('Check Whether the auto pay is present or visible', function () {
 
-    return client.frame('adminTool').useXpath().waitForElementPresent("//ul[@class='settings']/li/h5[contains(text(),'Auto Pay')]");
+    return client.frame('adminTool').waitForElementPresent("//ul[@class='settings']/li/h5[contains(text(),'Auto Pay')]");
 
    
 });
