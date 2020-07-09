@@ -17,7 +17,7 @@ Feature: Change the status functionality
         Given Open the admin tool
         When select the status change
         Then get the current status in an account status, it should be Active or Active | Past Due or Active | Notice to Block or Active | Unpaid and choose the delay billing option
-        When pass relevant data
+        When select the period and pass note
         Then move to credit page
         When check the alert for continue
         And validate moved to choosen credit section
@@ -28,7 +28,7 @@ Feature: Change the status functionality
         Given Open the admin tool
         When select the status change
         Then get the current status in an account status, it should be Active or Active | Past Due or Active | Notice to Block or Active | Unpaid and choose the delay billing option       
-        When pass relevant data
+        When select the period and pass note
         Then move to credit page
         When check the alert for cancel
         And validate it should stay in same section with that changes - delay billing and clear the info
@@ -45,6 +45,16 @@ Feature: Change the status functionality
         And validate the status in account detail - "Active | Delay Billing"
 
 
+    @delayBillingToActiveToClear
+    Scenario: Checking the clear functionality Return to Service from Delay Billing
+
+        Given Open the admin tool
+        When select the status change
+        Then get the current status in account status, it should be Active - Delay Billing
+        And select the option of return to service in change status to
+        Then pass some data in notes for return to serivce from delay billing to Active
+        Then clear the process
+
 
     @delayBillingToActive
     Scenario: Return to service from the DELAY-BILLING
@@ -57,15 +67,6 @@ Feature: Change the status functionality
         And submit the process
         Then check the status in account detail - "Active"
 
-
-    Scenario: Checking the clear functionality Return to Service from Delay Billing
-
-        Given Open the admin tool
-        When select the status change
-        Then get the current status in account status, it should be Active - Delay Billing
-        And select the option of return to service in change status to
-        Then pass some data in notes for return to serivce from delay billing to Active
-        Then clear the process
 
     ### DORMANCY CASES
 
@@ -181,17 +182,17 @@ Feature: Change the status functionality
 
         Given Open the admin tool
         When select the status change
-        Then get the current status in account status, it should be Notice to Block or Block for Non Payment status - "Status"
+        Then get the current status in account status, it should be Notice to Block or Block for Non Payment status
         And select the option of Unblock Account in change status to
         When pass the notes to moving to Unblock status
         Then submit the process
-        And validate the status in account detail - "Active"
+        And unblock the customer and validate that customer
 
     Scenario: check the clear funcationality in UNBLOCK ACCOUNT
 
         Given Open the admin tool
         When select the status change
-        Then get the current status in account status, it should be Notice to Block or Block for Non Payment status - "Status"
+        Then get the current status in account status, it should be Notice to Block or Block for Non Payment status
         And select the option of Unblock Account in change status to
         When pass the notes to moving to Unblock status
         Then clear the process
@@ -200,7 +201,7 @@ Feature: Change the status functionality
 
         Given Open the admin tool
         When select the status change
-        Then get the current status in account status, it should be Notice to Block or Block for Non Payment status - "Status"
+        Then get the current status in account status, it should be Notice to Block or Block for Non Payment status
         And select the option of Unblock Account in change status to
         When pass the notes
         Then move to rerate page
@@ -211,7 +212,7 @@ Feature: Change the status functionality
 
         Given Open the admin tool
         When select the status change
-        Then get the current status in an account status, it should be Notice to Block or Block for Non Payment status - "Status"
+        Then get the current status in an account status, it should be Notice to Block or Block for Non Payment status
         And select the option of Unblock Account in change status to
         When pass the notes
         Then move to rerate page
@@ -230,6 +231,7 @@ Feature: Change the status functionality
         When pass the needed information to move to cancellation
         Then choose the reason to move for cancellation
         Then submit the process
+        Then validate in account Summary page
 
 
 
@@ -244,6 +246,8 @@ Feature: Change the status functionality
         Then Select the option of stopCancellation  in change status to
         When pass the neeeded information for stop cancellation
         Then submit the process
+        Then validate in account Summary page for stop cancellation
+
 
 
 ### RETURN TO SERVICE CASES
@@ -257,3 +261,17 @@ Feature: Change the status functionality
 #     When pass the notes to moving to active status
 #     Then submit the process
 #     And validate the status in account detail - "Active"
+
+
+## Move to Low-Utilization
+
+
+ @lowUtilization
+    Scenario: Move to low-utilization state
+
+        Given Open the admin tool
+        When select the status change
+        Then get the current status in an account status, it should be Active or Active | Past Due or Active | Notice to Block or Active | Unpaid and choose the low utilization option
+        When select the period and pass note
+        Then submit the process
+        And validate the status in account detail - "Active | Low Utilization Plan"

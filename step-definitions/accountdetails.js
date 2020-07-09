@@ -12,7 +12,7 @@ const requestInfo = require('./apiGet');
 Given('Open the admin tool', function () {
 
 
-     return client.frameParent().waitForElementVisible('#main div.modal-window.openmodal.admin-tool-modal div.modal-header h3',5000);
+     return client.pause(100).frameParent().waitForElementVisible('#main div.modal-window.openmodal.admin-tool-modal div.modal-header h3',5000);
     
    //requestInfo();
     // return client
@@ -113,7 +113,7 @@ Then('validate the industry value', function () {
 // Scenario: Updating the industry value
 When('validating the hover of edit option', function () {
 
-    return client.frame('adminTool').assert.visible('#editOption button svg g#Page-1').pause(3000)
+    return client.frame('adminTool').assert.visible('#editOption button svg g#Page-1').pause(5000)
     .moveToElement('#editOption button svg g#Page-1',5,5);
 
 
@@ -122,7 +122,7 @@ When('validating the hover of edit option', function () {
 // Scenario: Updating the industry value
 When('validating the hover of edit option and should be in account summary page', function () {
 
-    return client.frame('adminTool').assert.visible('#editOption button svg g#Page-1')
+    return client.frame('adminTool').assert.visible('#editOption button svg g#Page-1').pause(3000)
     .moveToElement('#editOption button svg g#Page-1',5,5);
 
 });
@@ -133,7 +133,7 @@ Then('click the edit option', function () {
   // return client.click('button.edit-single.nostyle');
 
 
-  return client.pause(2000).moveToElement('button.edit-single.nostyle',5,5).doubleClick();
+  return client.pause(3000).moveToElement('button.edit-single.nostyle',5,5).doubleClick();
 
 });
 
@@ -149,9 +149,9 @@ Then('typing and select the option in an industry', function () {
         //console.log(industryValue.value);
         console.log("Testing"+industryValue.value.length);
         random = Math.floor((Math.random() * industryValue.value.length) + 1);
-           client.getText('#industryList > li:nth-child('+random+') > a', function(industryinfo){
+           client.getText('#industryList li:nth-child('+random+') a', function(industryinfo){
             updatedIndustry = industryinfo.value;
-              client.setValue("input[id='industryInput']", industryinfo.value).click('#industryList > li:nth-child('+random+') > a');
+              client.pause(1000).setValue("input[id='industryInput']", industryinfo.value).click('#industryList > li:nth-child('+random+') > a').pause(3000);
 
          });
 
@@ -161,7 +161,7 @@ Then('typing and select the option in an industry', function () {
 
 Then('update an industry', function () {
 
-    return client.getLocationInView("button#formSubmit.submit_btn").pause(1000).assert.visible('#formSubmit').click('#formSubmit');
+    return client.getLocationInView("button#formSubmit.submit_btn").pause(2000).assert.visible('#formSubmit').click('#formSubmit').pause(2000);
 
 
 });
@@ -183,11 +183,7 @@ Then('validate updated value', function () {
 
 Then('click the close button and validate it', function () {
 
-
-
-    return client.getLocationInView("button#formClear").pause(1000).assert.visible('#formClear').click('#formClear');
-
-
+    return client.getLocationInView("button#formClear").pause(2000).assert.visible('#formClear').click('#formClear').pause(3000);
 
 });
 

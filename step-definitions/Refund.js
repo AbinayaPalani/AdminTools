@@ -45,7 +45,7 @@ Then('Enter the details to process the refund transaction', function () {
 Then('check the transaction details for this account with successful status and click the refund link for full transaction', function () {
 
    
-    var AccountPin = "312d46d5-0862-40a8-b03c-b332dcd164ec";
+    var AccountPin = "c4a6b868-c7dd-442c-a991-6fb847c1aeef";
     console.log(AccountPin);
     console.log(urlSource);
     if(urlSource ==='staging'){
@@ -81,7 +81,7 @@ Then('check the transaction details for this account with successful status and 
 
                             if(remainingAmount > 0){
 
-                                return client.waitForElementPresent('tr:nth-child('+iteration+') a.autoFill',1000).click('tr:nth-child('+iteration+') a.autoFill');
+                                 client.waitForElementPresent('tr:nth-child('+iteration+') a.autoFill',1000).click('tr:nth-child('+iteration+') a.autoFill');
 
                             }
                             else{

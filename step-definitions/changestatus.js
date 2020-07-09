@@ -1,4 +1,3 @@
-
 const {
     client
 } = require('nightwatch-api');
@@ -30,38 +29,11 @@ Then('get the current status in an account status, it should be Active or Active
        //client.
   
     if(fromStatusValue.value === "Active" || fromStatusValue.value === 'Active | Past Due' 
-         || fromStatusValue.value === 'Active | Notice to Block' | fromStatusValue.value === 'Active | Unpaid'){
-   // client.assert.containsText('#accountStatus','Active');
+         || fromStatusValue.value === 'Active | Notice to Block' || fromStatusValue.value === 'Active | Unpaid'){
 
     client.waitForElementVisible('button#accountStatusButton span#accountStatusChange',3000).click('button#accountStatusButton span#accountStatusChange');
 
-    client.pause(1000).click('ul#userStatusList li:nth-child(2) a#delayBilling');
-
-
-    // client.elements('css selector',"ul#userStatusList li", (listOfStatusSizeResult) => {
-
-    //     console.log("count of the list "+listOfStatusSizeResult.value.length);
-
-    //     for(listOfStatus = 1; listOfStatus < listOfStatusSizeResult.value.length; listOfStatus++){
-            
-    //          client.waitForElementVisible('ul#userStatusList li:nth-child('+listOfStatus+') a').pause(2000).getText('css selector','ul#userStatusList li:nth-child('+listOfStatus+') a',function(result){
-
-
-
-    //              if(result.value === "Delay Billing"){
-
-    //                 console.log("Delay billing get confirmed");
-
-    //                 //client.moveToElement('ul#userStatusList li:nth-child('+listOfStatus+') a',1,1).doubleClick();
-    //                 client.pause(1000).click('ul#userStatusList li:nth-child('+listOfStatus+') a#delayBilling');
-    //              }
-
-    //         });
-    //      }
-
-    //  });
-
-  
+    client.pause(2000).click('a#delayBilling.userStatuses').pause(2000);
 
  }
    
@@ -191,7 +163,7 @@ When('validate moved to choosen credit section', function () {
 
 When('validate it should stay in same section with that changes - delay billing and clear the info', function () {
     
-return client.assert.containsText('h4#popupHeader','Delay Billing').getLocationInView("button#formSubmit.submit_btn").pause(1000).assert.visible('#formClear').click('#formClear');
+return client.assert.containsText('h4#popupHeader','Delay Billing').getLocationInView("button#formSubmit.submit_btn").pause(1000).assert.visible('#formClear').click('#formClear').pause(3000);
     
 });
 
@@ -214,24 +186,12 @@ Then('get the current status in account status, it should be Active - Delay Bill
 
 Then('select the option of return to service in change status to', function () {
     
-    return client.waitForElementVisible('button#accountStatusButton > span#accountStatusChange',3000).pause(1000).click('button#accountStatusButton > span#accountStatusChange').assert.visible('ul#userStatusList > li:nth-child(1) a#returnToService').click('ul#userStatusList > li:nth-child(1) a#returnToService');
+    return client.waitForElementVisible('button#accountStatusButton span#accountStatusChange',3000)
+    .pause(1000).click('button#accountStatusButton span#accountStatusChange')
+    .assert.visible('a#returnToService.userStatuses')
+    .click('a#returnToService.userStatuses');
 
-    // var listOfStatusSize = client.elements('css selector',"ul#userStatusList li", listOfStatusSizeResult => {
-
-    //     for(listOfStatus = 1; listOfStatus <=  listOfStatusSizeResult.value.length; ++listOfStatus){
-            
-    //         client.waitForElementVisible('ul#userStatusList li:nth-child('+listOfStatus+') a').getText('css selector','ul#userStatusList > li:nth-child('+listOfStatus+') a',function(result){
-
-    //             if(result === "returnToService"){
-
-    //                 client.click('ul#userStatusList > li:nth-child('+listOfStatus+') a');
-
-    //             }
-
-    //         });
-    //     }
-
-    // })
+   
 });
 
 
@@ -245,17 +205,37 @@ Then('pass some data in notes for return to serivce from delay billing to Active
 Then('submit the process', function () {
 
     return client
-    .assert.visible('#formSubmit').pause(2000).click("button[id='formSubmit']")
-    .waitForElementVisible('#notification',50000)
-    .getText("p[id='notification']", function(notificationResult){
-        console.log("Notification message : "+notificationResult.value);
-       
-    });
+    .getLocationInView("button#formSubmit.submit_btn").
+    pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(10000);
 
-
-    
     
 });
+
+
+
+Then('get the current status in account status, it should be Active | Dormancy', function () {
+
+    let fromStatusValue;
+    return client.pause(2000).getValue("input[id='accountStatus']", function(fromStatusValue){
+ 
+    
+        //fromStatusValue = fromStatusValue.value;
+        console.log("Get the status value from the ui 2 "+fromStatusValue.value);
+ 
+        //client.
+   
+     if(fromStatusValue.value === "Active" || fromStatusValue.value === 'Active | Past Due' 
+          || fromStatusValue.value === 'Active | Notice to Block' || fromStatusValue.value === 'Active | Unpaid'
+        || fromStatusValue.value === 'Active | Dormancy' ){
+ 
+     client.waitForElementVisible('button#accountStatusButton span#accountStatusChange',3000).click('button#accountStatusButton span#accountStatusChange');
+  
+  }
+    
+ });
+
+   
+  });
 
 // When('check the alert for continue', function(){
 
@@ -318,14 +298,14 @@ When('select the period and pass note', function () {
 
 
              client.assert.visible('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn').click('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn')
-                .setValue('input#popupDate',"27062020").setValue('textarea#popupDescription','Testing moving to delay billing through automation');
+                .setValue('input#popupDate',"27072020").setValue('textarea#popupDescription','Testing the admintool on nightwatch js');
            
 
         }
         else
         {
              client.assert.visible('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn').click('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn')
-                .setValue('textarea#popupDescription','Testing moving to delay billing through automation');
+                .setValue('textarea#popupDescription','Testing the admintool on nightwatch js');
              
         }
 
@@ -343,33 +323,54 @@ When('select the period and pass note', function () {
 
 Then("get the current status in an account status, it should be Active or Active | Past Due or Active | Notice to Block or Active | Unpaid and choose the Dormancy option", function () {
     
+
+
     let fromStatusValue;
-   return client.getValue("input[id='accountStatus']", function(fromStatusValue){
-       fromStatusValue = fromStatusValue.value;
-  
-   if(fromStatusValue === "Active" || fromStatusValue === 'Active | Past Due' 
-        || fromStatusValue === 'Active | Notice to Block' | fromStatusValue === 'Active | Unpaid'){
-    client.assert.containsText('#accountStatus','Active');
+    return client.pause(2000).getValue("input[id='accountStatus']", function(fromStatusValue){
+ 
+    
+        //fromStatusValue = fromStatusValue.value;
+        console.log("Get the status value from the ui 2 "+fromStatusValue.value);
+ 
+        //client.
+   
+     if(fromStatusValue.value === "Active" || fromStatusValue.value === 'Active | Past Due' 
+          || fromStatusValue.value === 'Active | Notice to Block' | fromStatusValue.value === 'Active | Unpaid'){
+ 
+     client.pause(1000).waitForElementVisible('button#accountStatusButton span#accountStatusChange',3000).click('button#accountStatusButton span#accountStatusChange');
+ 
+     client.pause(2000).click('a#dormancy.userStatuses').pause(2000);
+ 
+  }
+    
+ });
 
-    client.waitForElementVisible('button#accountStatusButton span#accountStatusChange',3000).click('button#accountStatusButton span#accountStatusChange');
+//     let fromStatusValue;
+//    return client.getValue("input[id='accountStatus']", function(fromStatusValue){
+//        fromStatusValue = fromStatusValue.value; 
+//    if(fromStatusValue === "Active" || fromStatusValue === 'Active | Past Due' 
+//         || fromStatusValue === 'Active | Notice to Block' | fromStatusValue === 'Active | Unpaid'){
+//     client.assert.containsText('#accountStatus','Active');
 
-    var listOfStatusSize = client.elements('css selector',"ul#userStatusList li", listOfStatusSizeResult => {
+//     client.waitForElementVisible('button#accountStatusButton span#accountStatusChange',3000).click('button#accountStatusButton span#accountStatusChange');
 
-        for(listOfStatus = 1; listOfStatus <=  listOfStatusSizeResult.value.length; ++listOfStatus){
+//     var listOfStatusSize = client.elements('css selector',"ul#userStatusList li", listOfStatusSizeResult => {
+
+//         for(listOfStatus = 1; listOfStatus <=  listOfStatusSizeResult.value.length; ++listOfStatus){
             
-            client.waitForElementVisible('ul#userStatusList li:nth-child('+listOfStatus+') a').getText('css selector','ul#userStatusList li:nth-child('+listOfStatus+') a',function(result){
+//             client.waitForElementVisible('ul#userStatusList li:nth-child('+listOfStatus+') a').getText('css selector','ul#userStatusList li:nth-child('+listOfStatus+') a',function(result){
 
-                if(result === "Dormancy"){
+//                 if(result === "Dormancy"){
 
-                    client.click('ul#userStatusList li:nth-child('+listOfStatus+') a');
+//                     client.click('ul#userStatusList li:nth-child('+listOfStatus+') a');
 
-                }
+//                 }
 
-            });
-        }
+//             });
+//         }
 
-    })
-}});
+//     })
+
 
   
     
@@ -448,7 +449,7 @@ Then('select the option of Block Account in change status to', function () {
 
 When('pass the notes to moving to block status', function () {
 
-    return client.waitForElementVisible('div#popupDescriptionDiv textarea#popupDescription').setValue('div#popupDescriptionDiv textarea#popupDescription', 'A customer move to block due to unpaid invoice');
+    return client.pause(2000).waitForElementVisible('div#popupDescriptionDiv textarea#popupDescription').setValue('div#popupDescriptionDiv textarea#popupDescription', 'A customer move to block due to unpaid invoice');
     
     
 });
@@ -476,6 +477,26 @@ When('validate moved to choosen refund section', function () {
 
 Then('get the current status in an account status, it should be Active or Active | Past Due or Active | Notice to Block or Active | Unpaid and choose the Block option', function () {
     
+    let fromStatusValue;
+    return client.pause(2000).getValue("input[id='accountStatus']", function(fromStatusValue){
+ 
+    
+        //fromStatusValue = fromStatusValue.value;
+        console.log("Get the status value from the ui 2 "+fromStatusValue.value);
+ 
+        //client.
+   
+     if(fromStatusValue.value === "Active" || fromStatusValue.value === 'Active | Past Due' 
+          || fromStatusValue.value === 'Active | Notice to Block' || fromStatusValue.value === 'Active | Unpaid'
+        || fromStatusValue.value === "Active | Dormancy" || fromStatusValue.value === 'Active | Delay Billing'){
+ 
+     client.pause(1000).waitForElementVisible('button#accountStatusButton span#accountStatusChange',3000).click('button#accountStatusButton span#accountStatusChange');
+ 
+     client.pause(2000).click('a#blockAccount.userStatuses').pause(2000);
+ 
+  }
+});
+
     
     
 });
@@ -491,15 +512,18 @@ When('validate it should stay in same section with that changes - Block Account'
 
 Then('select the option of Unblock Account in change status to', function () {
 
-    return client.waitForElementVisible("button[id='accountStatusButton']").click("ul[id='userStatusList'] li a[id='unblock']");
+    return client.waitForElementVisible("button[id='accountStatusButton']").click("a#unblock.userStatuses");
     
     
 });
 
 // Scenario: check the clear funcationality in UNBLOCK ACCOUNT 
-Then('get the current status in account status, it should be Notice to Block or Block for Non Payment status - {string}', function (string) {
+Then('get the current status in account status, it should be Notice to Block or Block for Non Payment status', function () {
 
-    return client.waitForElementVisible("input[id='accountStatus']").assert.containsText("input[id='accountStatus']",'Active | Blocked for Non-Payment');
+    return client.pause(2000).waitForElementVisible("input[id='accountStatus']")
+        .assert.visible('button#accountStatusButton span#accountStatusChange')
+        .click('button#accountStatusButton span#accountStatusChange');
+        
     
     
     
@@ -519,14 +543,16 @@ When('pass the notes to moving to Unblock status', function () {
 
 Then('Select the option of cancellation  in change status to', function(){
 
-    return client.waitForElementVisible("ul[id='userStatusList'] li a[id='cancelAccount']").click("ul[id='userStatusList'] li a[id='cancelAccount']");
+    return client.pause(2000).click('button#accountStatusButton').waitForElementVisible("a#cancelAccount.userStatuses").click("a#cancelAccount.userStatuses");
 
 });
 
 When('pass the needed information to move to cancellation', function(){
 
     return client.waitForElementVisible("input[id='popupName']").setValue("input[id='popupName']","Abinaya")
-    .setValue("input[id='popupNumber']","9839483831").setValue("popupEmail","abinaya.palani@anywhere.co");
+    .setValue("input[id='popupNumber']","9839483831")
+    .setValue("#popupEmail","abinaya.palani@anywhere.co")
+    .setValue('div#popupDescriptionDiv textarea#popupDescription', 'Testing the cancellation on nightwatch js');
 
 });
 
@@ -534,18 +560,22 @@ When('pass the needed information to move to cancellation', function(){
 Then('choose the reason to move for cancellation', function(){
         
     var randomReasonList;
-    return client.getLocationInView("span#popupCancellationReason").pause(1000).assert.visible('span#popupCancellationReason').click('span#popupCancellationReason').elements("css selector","div.dropdownmenu.bottom ul#cancellationReasonList li", function(reasonList){
+    return client.pause(1000).getLocationInView("span#popupCancellationReason").pause(2000).assert.visible('span#popupCancellationReason').click('span#popupCancellationReason').elements("css selector","div.dropdownmenu.bottom ul#cancellationReasonList li", function(reasonList){
         console.log("Reason List for Credit Page "+reasonList.value.length);
         randomReasonList = Math.floor((Math.random() * reasonList.value.length) + 1);
         console.log("Random number to pick the reason from the list"+randomReasonList);
 
         if(randomReasonList === 10){
-            return client.getLocationInView('ul#cancellationReasonList li:nth-child('+randomReasonList+') a').pause(500).assert.visible('ul#cancellationReasonList li:nth-child('+randomReasonList+') a').click('ul#cancellationReasonList li:nth-child('+randomReasonList+') a')
+             client.pause(2000).getLocationInView('ul#cancellationReasonList li:nth-child('+randomReasonList+') a')
+             .pause(2000).assert.visible('ul#cancellationReasonList li:nth-child('+randomReasonList+') a')
+             .click('ul#cancellationReasonList li:nth-child('+randomReasonList+') a').pause(1000)
             .setValue('textarea#cancelReason',"Testing the cancellation in the admin tool..!");
         }
         else
         {
-            return client.getLocationInView('ul#cancellationReasonList li:nth-child('+randomReasonList+') a').pause(500).assert.visible('ul#cancellationReasonList li:nth-child('+randomReasonList+') a').click('ul#cancellationReasonList li:nth-child('+randomReasonList+') a');
+             client.pause(2000).getLocationInView('ul#cancellationReasonList li:nth-child('+randomReasonList+') a')
+                .pause(2000).assert.visible('ul#cancellationReasonList li:nth-child('+randomReasonList+') a')
+                .click('ul#cancellationReasonList li:nth-child('+randomReasonList+') a');
         }
 
     })
@@ -556,7 +586,8 @@ Then('choose the reason to move for cancellation', function(){
 
     Then('Select the option of stopCancellation  in change status to', function(){
 
-        return client.waitForElementVisible("ul[id='userStatusList'] li a[id='stopCancellation']").click("ul[id='userStatusList'] li a[id='stopCancellation']");
+        return client.pause(2000).click('button#accountStatusButton').waitForElementVisible("a#stopCancellation.userStatuses").click("a#stopCancellation.userStatuses");
+        
         
 
     });
@@ -564,7 +595,7 @@ Then('choose the reason to move for cancellation', function(){
 
     When("pass the neeeded information for stop cancellation", function(){
 
-        return client. waitForElementVisible('textarea#popupDescription').setValue('textarea#popupDescription','Return back to active through stop cancellation option');
+        return client.pause(1000).waitForElementVisible('textarea#popupDescription').setValue('textarea#popupDescription','Return back to active through stop cancellation option');
 
     });
 
@@ -607,5 +638,63 @@ When('validate it should stay in same section with that changes - Unblock Accoun
     
 });
 
+When('unblock the customer and validate that customer', function () {
 
-// Scenario: Moving to Active through return to service 
+    
+    return client.pause(3000).waitForElementVisible('#userStatus',1000).getValue('#userStatus', function(resultStatus){
+        
+                var status = 'Active'
+                console.log('status'+resultStatus.value);
+                console.log(status);
+                client.assert.valueContains("#userStatus", status);
+            });
+    
+    
+});
+
+
+Then('validate in account Summary page', function () {
+    
+        
+        return client.pause(3000).waitForElementVisible('#userStatus',1000).getValue('#userStatus', function(resultStatus){
+            
+                    var status = 'Cancelled | Customer Request'
+                    console.log('status'+resultStatus.value);
+                    console.log(status);
+                    client.assert.valueContains("#userStatus", status);
+                });
+        
+        
+    });
+    
+
+
+Then('validate in account Summary page for stop cancellation', function () {
+    
+        
+        return client.pause(3000).waitForElementVisible('#userStatus',1000).getValue('#userStatus', function(resultStatus){
+            
+                    var status = 'Active'
+                    console.log('status'+resultStatus.value);
+                    console.log(status);
+                    client.assert.valueContains("#userStatus", status);
+                });
+        
+        
+    });
+
+
+    Then('get the current status in an account status, it should be Active or Active | Past Due or Active | Notice to Block or Active | Unpaid and choose the low utilization option', function () {
+        
+            
+        return client.pause(2000)
+            .click('button#accountStatusButton')
+            .waitForElementVisible("a#lowUtilizationPlan.userStatuses")
+            .click("a#lowUtilizationPlan.userStatuses");
+        
+            
+            
+        });
+    
+
+

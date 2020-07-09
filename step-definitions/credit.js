@@ -93,8 +93,9 @@ Then('handle if duplicate credit is present so process the credit', function (){
 
 
 
-// When('clear the data', function () {
+Then('clear the data', function () {
 
-//     return client.click("button[id='formClear']");
-//     client.pause(500);
-// });
+    return client.getLocationInView("button#formClear").pause(1000).assert.visible('#formClear').click('#formClear').pause(4000);
+    
+   
+});

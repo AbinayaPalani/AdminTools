@@ -1,6 +1,6 @@
 
 Feature: Additional or Needed functionality
-
+##Account type update
     @accountType
     Scenario: Choosing the Account type
 
@@ -25,7 +25,7 @@ Feature: Additional or Needed functionality
         Then Disable the autoupgrade option in admintool
 
 
-
+##Allow ACH
 
     @enableAllowAch
     Scenario: Enable the Allow ACH
@@ -34,6 +34,14 @@ Feature: Additional or Needed functionality
         When Check whether the allow ach is present or visible
         Then Enable the allow ach option in admintool
 
+
+    @enableAllowAchWithCancel
+    Scenario: Cancel the Enable of Allow ACH
+
+        Given Open the admin tool
+        When Check whether the allow ach is present or visible
+        Then Cancel the allow ach option
+
     @disableAllowAch
     Scenario: Disable the Allow ACH
 
@@ -41,49 +49,53 @@ Feature: Additional or Needed functionality
         When Check whether the allow ach is present or visible
         Then Disable the allow ach option in admintool
 
-
-     @clearAlertAllowAch
-    Scenario: cancel the allow ach alert option
-
-        Given Open the admin tool
-        When check whether the allow ach is present or visible
-        Then Cancel the allow ach alert with text
-
-
-
-
-
-    @enableAutoPayWithAutoRe-enable
-    Scenario: Enable the Auto Pay with Auto Re-enable 
+    @disableAllowAchWithCancel
+    Scenario: Cancel the Enable of Allow ACH
 
         Given Open the admin tool
-        When Check Whether the auto pay is present or visible
-        Then Enable the auto pay option with Auto Re-enable
-
-
-    @enableAutoPayWithoutAutoRe-enable
-    Scenario: Enable the Auto Pay without Auto Re-enable 
-
-        Given Open the admin tool
-        When Check Whether the auto pay is present or visible
-        Then Enable the auto pay option without Auto Re-enable
-
-    @clearAutoPayONChosenAutoRe-enable
-    Scenario: Clear autoPay with chosen of auto re-enable
-
-        Given Open the admin tool
-        When Check Whether the auto pay is present or visible
-        Then 
+        When Check whether the allow ach is present or visible
+         Then Cancel the allow ach option
 
 
 
 
-    @disableAutoPay
-    Scenario: Disable the Auto Pay
+
+###AUTOPAY
+
+    @enableAutoPayCancel
+    Scenario: Disable the Auto Pay with renewable date
 
         Given Open the admin tool
         When Check whether the auto pay is present or visible
-        Then Disable the auto pay option in admintool
+        Then Cancel the autopay option
+
+    @enableAutoPay
+    Scenario: Enable the Auto Pay with Auto Re-enable 
+
+        Given Open the admin tool
+        When Check whether the auto pay is present or visible
+        Then Enable the auto pay option
+
+
+
+    @disableAutoPayOnCancel
+    Scenario: cancel the disable for auto-pay
+
+        Given Open the admin tool
+        When Check whether the auto pay is present or visible
+        Then Cancel the autopay option
+
+    @disableAutoPayWithRenewableDate
+    Scenario: Disable the Auto Pay with renewable date
+
+        Given Open the admin tool
+        When Check whether the auto pay is present or visible
+        Then Disable the auto pay option in admintool with renewable date
+
+         
+    
+##Exclude 
+
 
     @enableExcludeCollection
     Scenario: Enable the exclude collection
@@ -91,9 +103,58 @@ Feature: Additional or Needed functionality
         When Check whether exclude collection is present
         Then Enable the exclude collection option
 
+        @enableExcludeCollectionWithCancel
+    Scenario: Enable the exclude collection
+        Given Open the admin tool
+        When Check whether exclude collection is present
+         Then Cancel the exclude collection option
+
     @disableExcludeCollection
     Scenario: Disable the exclude collection
         Given Open the admin tool
         When Check whether exclude collection is present
         Then Disable the exclude collection option
+
+    @disableExcludeCollectionWithCancel
+    Scenario: Disable the exclude collection
+        Given Open the admin tool
+        When Check whether exclude collection is present
+       Then Cancel the exclude collection option
+
+##ExcessUsage 
+
+
+    @enableExcessUsageOnAutoPayON
+    Scenario: Enable the excess usage charges and if there is not auto pay enable and enable it and then process it
+        Given Open the admin tool
+        When Check whether excess usage charges is present
+        Then During enabling with excess usage charges option on this case if there is no autopay enable means do the enable of autopay and then enable the excessusage 
+
+
+  @disableExcessUsageWithCancel
+    Scenario: Cancel the excess usage charges
+        Given Open the admin tool
+        When Check whether excess usage charges is present
+       Then Cancel the excess usage charges option
+
+
+        @enableExcessUsageWithCancel
+    Scenario: Cancel the excess usage charges
+        Given Open the admin tool
+        When Check whether excess usage charges is present
+         Then Cancel the excess usage charges option
+
+
+    @enableExcessUsage
+    Scenario: Enable the excess usage charges
+        Given Open the admin tool
+        When Check whether excess usage charges is present
+        Then Enable the excess usage charges option
+
+
+    @disableExcessUsage
+    Scenario: Disable the excess usage charges
+        Given Open the admin tool
+        When Check whether excess usage charges is present
+        Then Disable the excess usage charges option
 

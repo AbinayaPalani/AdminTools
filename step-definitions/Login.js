@@ -40,7 +40,7 @@ When('fetch the account details in CWA', async () => {
 
     await client
             .waitForElementVisible('#fetchAccountInput',10000)
-            .setValue('#fetchAccountInput','kywuvif@dropjar.com')
+            .setValue('#fetchAccountInput','sabitha+343434@anywhere.co')
             .keys(client.Keys.ENTER)
             .keys(client.Keys.ENTER);
 
