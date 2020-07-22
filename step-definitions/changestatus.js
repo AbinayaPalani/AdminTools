@@ -7,6 +7,11 @@ const {
     When
 } = require('cucumber');
 
+var chai = require('chai');  
+var assert = chai.assert;    // Using Assert style
+var expect = chai.expect;    // Using Expect style
+var should = chai.should();  // Using Should style
+
 
 // Scenario: Moving to DELAY-BILLING state
 
@@ -206,7 +211,7 @@ Then('submit the process', function () {
 
     return client
     .getLocationInView("button#formSubmit.submit_btn").
-    pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(10000);
+    pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(20000);
 
     
 });
@@ -698,3 +703,138 @@ Then('validate in account Summary page for stop cancellation', function () {
     
 
 
+
+
+
+    //Return to service step defintion
+
+
+    Then('get the current status in an account status, it should be Cancellation | Dormancy | Return to service and then select the return to service', function () {
+        
+       return client.pause(2000)
+                .click('button#accountStatusButton')
+                .waitForElementVisible('a#returnToService.userStatuses')
+                .click('a#returnToService.userStatuses');
+            
+    });
+    
+
+
+    Then('Assert the title of Return to service', function () {
+        
+       return client.pause(2000)
+                .assert.valueContains("div.modal-header h4#popupHeader", "Return To Service");
+                
+            
+    });
+
+    Then('Choose the plan', function () {
+        
+        var randomReasonList;
+        
+
+                
+        return client.getLocationInView('div#voicePlanContainer div div.plan-hd h6')
+             .pause(1000).assert.visible('div#voicePlanContainer div div.plan-hd h6')
+             .click('div#voicePlanSelectionDetails')
+             .elements("css selector",'ul.plans-list#voicePlanList li', function(result){
+
+                    var voicePlanList = result.value.length;
+                    console.log("Voice plan size "+ voicePlanList);
+
+                    randomReasonList = Math.floor((Math.random() * voicePlanList) + 1);
+                    client.getLocationInView('ul.plans-list#voicePlanList li:nth-child('+randomReasonList+')').pause(500)
+                    .click('ul.plans-list#voicePlanList li:nth-child('+randomReasonList+')').pause(3000)
+                    .click('button#formSubmit');
+                    
+
+                    
+
+        });
+            
+    });
+
+
+
+    Then('Select the asset and choose the primary asset and if he had adjustment pay the amount', function () {
+        
+        var randomAssetList;
+     
+        return client.pause(2000).click('button#addButton')
+                        .elements("css selector",'ul#activeAssetListVoice li', function(result){
+
+                            var assertList = result.value.length;
+                            console.log("Voice plan size "+ assertList);
+                            randomAssetList = Math.floor((Math.random() * assertList) + 1);
+
+                            client.getLocationInView('ul#activeAssetListVoice li:nth-child('+randomAssetList+')').pause(500)
+                                    .click('ul#activeAssetListVoice li:nth-child('+randomAssetList+')').pause(3000)
+                                    .click('button#nextButton');
+
+                            if( client.expect.element('button#payBtn').to.be.visible){
+
+                                client.pause(3000).click('button#payBtn');
+                                if(client.expect.element('li#existingCard').to.be.visible){
+
+                                    client
+                                    .getLocationInView("button#formSubmit.submit_btn").
+                                    pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(20000);
+                                
+
+                                }
+
+                                else{
+
+                                    client.pause(1000).setValue('input#cardNumber', '4217651111111119')
+                                            .setValue('input#cardName', 'Abinaya')
+                                            .setValue('input#expiryMonth', '12')
+                                            .setValue('input#expiryYear', '2021')
+                                            .setValue('input#cvv', '331')
+                                            .setValue('input#address', '10 SE Street')
+                                            .setValue('div#countryDiv button#countryButton', 'United States')
+                                            .setValue('input#state', 'Portland')
+                                            .setValue('input#city', 'Oregon')
+                                            .setValue('input#zip', '923211').pause(2000)
+                                            .getLocationInView("button#formSubmit.submit_btn").
+                                            pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(20000);
+                                }
+
+                            }
+        });
+            
+    });
+
+
+    Then('Return to service with reason', function () {
+        
+       return client.pause(2000)
+                .setValue('textarea.validate_blur#notes', 'Return to service on automation process');
+                
+            
+    });
+
+
+
+    Then('Return to service with reason', function () {
+        
+       return client.pause(2000)
+                .setValue('textarea.validate_blur#notes', 'Return to service on automation process')
+                .click('button#returnToActiveButton').pause(10000);
+                
+            
+    });
+
+
+    Then('validate the status in account detail', function () {
+        
+          
+        return client.pause(3000).waitForElementVisible('#userStatus',1000).getValue('#userStatus', function(resultStatus){
+            
+                    var status = 'Active'
+                    console.log('status'+resultStatus.value);
+                    console.log(status);
+                    client.assert.valueContains("#userStatus", status);
+                });
+        
+            
+    });

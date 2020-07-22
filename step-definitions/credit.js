@@ -30,7 +30,7 @@ When('Pass the necessary data to process the credit', function () {
 
     var randomReasonList;
     return client.setValue('#popupURL',"https://wwww.google.com")
-                .setValue('#popupAmount',0.56)
+                .setValue('#popupAmount',0.96)
                 .setValue('#popupDescription', "Automation credit Adjustment");
 
 });

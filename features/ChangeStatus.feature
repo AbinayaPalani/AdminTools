@@ -275,3 +275,20 @@ Feature: Change the status functionality
         When select the period and pass note
         Then submit the process
         And validate the status in account detail - "Active | Low Utilization Plan"
+
+
+
+
+    ##Return to service
+
+ @returnToService
+    Scenario: Move to Active state
+
+        Given Open the admin tool
+        When select the status change
+        Then get the current status in an account status, it should be Cancellation | Dormancy | Return to service and then select the return to service
+        Then Assert the title of Return to service
+        When Choose the plan
+        Then Select the asset and choose the primary asset and if he had adjustment pay the amount
+        And Return to service with reason
+        Then validate the status in account detail

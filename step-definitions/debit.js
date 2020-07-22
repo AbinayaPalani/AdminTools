@@ -28,7 +28,7 @@ When('select the debit section and click create debit link', function () {
 When('Pass the necessary data to process the debit', function () {
 
     return client.setValue('#popupURL',"https://www.google.com")
-                .setValue('#popupAmount',2.29)
+                .setValue('#popupAmount',2.89)
                 .setValue('#popupDescription', "Automation debit Adjustment");
 
 });

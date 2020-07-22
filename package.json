@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/AbinayaPalani/NightWatch#readme",
   "dependencies": {
-    "async": "^3.1.0"
+    "async": "^3.1.0",
+    "chai": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",

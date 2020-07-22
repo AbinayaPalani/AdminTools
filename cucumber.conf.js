@@ -26,6 +26,8 @@ AfterAll(async () => {
       output: './reports/cucumber_report.html',
       reportSuiteAsScenarios: true,
       launchReport: true,
+      brandTitle:'Acceptance Test Report',
+      name:'Admin Tool',      
       metadata: {
         'App Version': '0.3.2',
         'Test Environment': 'POC'

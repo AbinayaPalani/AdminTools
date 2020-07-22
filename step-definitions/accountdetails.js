@@ -161,7 +161,7 @@ Then('typing and select the option in an industry', function () {
 
 Then('update an industry', function () {
 
-    return client.getLocationInView("button#formSubmit.submit_btn").pause(2000).assert.visible('#formSubmit').click('#formSubmit').pause(2000);
+    return client.getLocationInView("button#formSubmit.submit_btn").pause(3000).assert.visible('#formSubmit').click('#formSubmit').pause(5000);
 
 
 });
