@@ -722,36 +722,31 @@ Then('validate in account Summary page for stop cancellation', function () {
 
     Then('Assert the title of Return to service', function () {
         
-       return client.pause(2000)
-                .assert.valueContains("div.modal-header h4#popupHeader", "Return To Service");
-                
+    //    return client.pause(2000)
+    //             .assert.valueContains("div.modal-header h4#popupHeader", "Return To Service");
+         
+    return client.pause(2000).expect.element('div.modal-header h4#popupHeader').text.to.equal('Return To Service');
             
     });
 
     Then('Choose the plan', function () {
-        
         var randomReasonList;
-        
-
-                
-        return client.getLocationInView('div#voicePlanContainer div div.plan-hd h6')
-             .pause(1000).assert.visible('div#voicePlanContainer div div.plan-hd h6')
-             .click('div#voicePlanSelectionDetails')
-             .elements("css selector",'ul.plans-list#voicePlanList li', function(result){
+        return client.pause(2000).getLocationInView('div#voicePlanContainer div div.plan-hd h6')
+        .pause(2000).assert.visible('div#voicePlanContainer div div.plan-hd h6')
+        .click('div#voicePlanContainer')
+                .elements("css selector",'ul.plans-list#voicePlanList li', function(result){
 
                     var voicePlanList = result.value.length;
                     console.log("Voice plan size "+ voicePlanList);
 
                     randomReasonList = Math.floor((Math.random() * voicePlanList) + 1);
                     client.getLocationInView('ul.plans-list#voicePlanList li:nth-child('+randomReasonList+')').pause(500)
-                    .click('ul.plans-list#voicePlanList li:nth-child('+randomReasonList+')').pause(3000)
-                    .click('button#formSubmit');
+                    .click('ul.plans-list#voicePlanList li:nth-child('+randomReasonList+')').pause(3000);
                     
 
-                    
+                    //ul.plans-list#voicePlanList li:nth-child(81)
 
-        });
-            
+                });
     });
 
 
@@ -807,22 +802,22 @@ Then('validate in account Summary page for stop cancellation', function () {
 
     Then('Return to service with reason', function () {
         
-       return client.pause(2000)
-                .setValue('textarea.validate_blur#notes', 'Return to service on automation process');
+       return client.pause(2000).getLocationInView('textarea.validate_blur#notes')
+                .setValue('textarea.validate_blur#notes', 'Return to service on automation process').pause(10000);
                 
             
     });
 
 
 
-    Then('Return to service with reason', function () {
+    //Then('Return to service with reason', function () {
         
-       return client.pause(2000)
-                .setValue('textarea.validate_blur#notes', 'Return to service on automation process')
-                .click('button#returnToActiveButton').pause(10000);
+    //    return client.pause(2000)
+    //             .setValue('textarea.validate_blur#notes', 'Return to service on automation process')
+    //             .click('button#returnToActiveButton').pause(10000);
                 
             
-    });
+    // });
 
 
     Then('validate the status in account detail', function () {
