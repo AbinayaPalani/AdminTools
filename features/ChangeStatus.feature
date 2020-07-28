@@ -289,6 +289,7 @@ Feature: Change the status functionality
         Then get the current status in an account status, it should be Cancellation | Dormancy | Return to service and then select the return to service
         Then Assert the title of Return to service
         When Choose the plan
+        Then submit the plan choosen
         Then Select the asset and choose the primary asset and if he had adjustment pay the amount
         And Return to service with reason
         Then validate the status in account detail

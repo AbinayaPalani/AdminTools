@@ -740,7 +740,7 @@ Then('validate in account Summary page for stop cancellation', function () {
                     console.log("Voice plan size "+ voicePlanList);
 
                     randomReasonList = Math.floor((Math.random() * voicePlanList) + 1);
-                    client.getLocationInView('ul.plans-list#voicePlanList li:nth-child('+randomReasonList+')').pause(500)
+                    client.getLocationInView('ul.plans-list#voicePlanList li:nth-child('+randomReasonList+')').pause(3000)
                     .click('ul.plans-list#voicePlanList li:nth-child('+randomReasonList+')').pause(3000);
                     
 
@@ -750,6 +750,11 @@ Then('validate in account Summary page for stop cancellation', function () {
     });
 
 
+    Then('submit the plan choosen', function(){
+        
+            return client.getLocationInView("button#formSubmit.submit_btn").pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(2000);
+        });
+        
 
     Then('Select the asset and choose the primary asset and if he had adjustment pay the amount', function () {
         
@@ -803,7 +808,9 @@ Then('validate in account Summary page for stop cancellation', function () {
     Then('Return to service with reason', function () {
         
        return client.pause(2000).getLocationInView('textarea.validate_blur#notes')
-                .setValue('textarea.validate_blur#notes', 'Return to service on automation process').pause(10000);
+                .setValue('textarea.validate_blur#notes', 'Return to service on automation process')
+                .getLocationInView('button#returnToActiveButton')
+                .click('button#returnToActiveButton').pause(20000);
                 
             
     });
