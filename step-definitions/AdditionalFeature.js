@@ -108,9 +108,9 @@ Then('Enable the allow ach option in admintool', function () {
    //return client.frame('adminTool').waitForElementPresent('span#allowACHtoogle',500).pause(2000).moveToElement('span#allowACHtoogle',5,5).doubleClick();
 
    return client.assert.visible('span#allowACHtoogle').pause(100).click('span#allowACHtoogle').pause(500)
-   .assert.containsText("p#alertTextContent", "Reason for Turning AllowACH ON")
-   .setValue('div#reasonForToggle textarea#toggleReason','Testing autopay with renewable options')
-   .click('div#buttonWrapper button#proceedToggle').pause(1000);
+                .assert.containsText("p#alertTextContent", "Reason for Turning AllowACH ON")
+                .setValue('div#reasonForToggle textarea#toggleReason','Testing autopay with renewable options')
+                .click('div#buttonWrapper button#proceedToggle').pause(1000);
 
 
     // return client.assert.visible('span#allowACHtoogle.togl_butn');
@@ -124,9 +124,9 @@ Then('Disable the allow ach option in admintool', function () {
 
    
     return client.assert.visible('span#allowACHtoogle').pause(100).click('span#allowACHtoogle').pause(500)
-    .assert.containsText("p#alertTextContent", "Reason for Turning AllowACH OFF")
-    .setValue('div#reasonForToggle textarea#toggleReason','Testing autopay with renewable options')
-    .click('div#buttonWrapper button#proceedToggle').pause(1000);
+                .assert.containsText("p#alertTextContent", "Reason for Turning AllowACH OFF")
+                .setValue('div#reasonForToggle textarea#toggleReason','Testing autopay with renewable options')
+                .click('div#buttonWrapper button#proceedToggle').pause(1000);
 
 });
 
@@ -285,3 +285,41 @@ Then('During enabling with excess usage charges option on this case if there is 
     
 });
 
+
+Given('Check the customer is in postpaid billing type', function () {
+
+    return client.expect.element('li#changeBillingType_li h5').text.to.equal('Billing Type');
+    
+});
+
+Then('in case of customer is in postpaid, we have to change into prepaid billing type', function () {
+    
+   return client.click('div#billingTypeDiv button#billingTypeButton').pause(500)
+                    .click('ul#billingTypeList li:nth-child(2)');
+
+    
+});
+
+
+Then('Submit the reason for billing type', function () {
+    
+    return client.setValue('div#reasonForToggle textarea#toggleReason', 'Move the customer to prepaid billing type'); 
+    
+});
+
+Then('cancel the popup for prepaid change', function () {
+    
+    return client.pause(1000).click('div#buttonWrapper button#closeReason');
+           
+    
+    
+});
+
+
+Then('submit the process for change billing type', function () {
+    
+    return client.pause(1000).click('div#buttonWrapper button#proceedToggle').pause(1000)
+             .expect.element('div#billingTypeDiv button#billingTypeButton span#billingType')
+             .text.to.equal('Postpaid');
+           
+});

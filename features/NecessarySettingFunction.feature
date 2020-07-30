@@ -158,3 +158,19 @@ Feature: Additional or Needed functionality
         When Check whether excess usage charges is present
         Then Disable the excess usage charges option
 
+    @prepaidConversionToSubmit
+    Scenario: Validate the billingType and then change to prepaid 
+        Given Open the admin tool
+        When Check the customer is in postpaid billing type
+        Then in case of customer is in postpaid, we have to change into prepaid billing type
+        Then Submit the reason for billing type
+        And submit the process for change billing type
+
+    @prepaidConversionToCancel
+    Scenario: Validate the billingType and then change to prepaid 
+        Given Open the admin tool
+        When Check the customer is in postpaid billing type
+        Then in case of customer is in postpaid, we have to change into prepaid billing type
+        Then Submit the reason for billing type
+        And cancel the popup for prepaid change and should in postpaid billing type
+

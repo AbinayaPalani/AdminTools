@@ -12,7 +12,9 @@ module.exports = {
       },
       screenshots: {
         enabled: true,
-        path: 'screenshots'
+        path: 'screenshots',
+        "on_failure": true,
+        "on_error": true
       }
     },
     chromeHeadless: {
