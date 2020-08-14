@@ -14,7 +14,7 @@ var config = require('../nightwatch.conf.js');
 
 Given('I open the page in CWA with {string}', async (string) => {
 
-    await client.url('https://staging.access.answerconnect.com/')
+    return client.url('https://staging.access.answerconnect.com/')
                 .waitForElementVisible("body[id='brand-answerconnectuk']",1000000)
                 .waitForElementVisible('input[name="email"]')
                 .setValue('input[name="email"]', string)
@@ -38,9 +38,9 @@ When('fetch the account details in CWA', async () => {
     //     console.log("Test "+ result.value);
     // });   
 
-    await client
+    return client
             .waitForElementVisible('#fetchAccountInput',10000)
-            .setValue('#fetchAccountInput','lkj@kk.com')
+            .setValue('#fetchAccountInput','98e9ea3c-8135-4027-b4e5-138bb729a768')
             .keys(client.Keys.ENTER)
             .keys(client.Keys.ENTER);
 
@@ -55,7 +55,7 @@ When('fetch the account details in CWA', async () => {
 Then('select the billing page in CWA', async () => {
 
 
-    await client
+    return client
              .waitForElementVisible('ul[id="search_Result"] li',50000)
             .click('ul[id="search_Result"] li')
             .waitForElementVisible('li[id="billing"]',50000)
@@ -69,7 +69,7 @@ Then('select the billing page in CWA', async () => {
 
 Then('click the Admin Tool section', async () => {
 
-    await client
+    return client
              .waitForElementVisible('button[class="nostyle admin-tool-btn"]',8000)
              .click('button[class="nostyle admin-tool-btn"]');
 
