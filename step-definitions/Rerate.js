@@ -55,3 +55,33 @@ Then('acoording to rerate, to activate the credit for that customer', function (
 
         });
 
+
+Then('acoording to rerate, to De-activate the credit for that customer', function () {
+                
+        return client.getLocationInView("button#formClear")
+                .pause(1000).assert.visible('#formClear')
+                .click('#formClear').pause(4000);
+                
+                
+                
+       });
+            
+       Then('check the validation for whether re-rate credit under the customer it can no re-rate or already is in best plan', function () {
+        
+        return client.pause(5000).getText('div#popUpMessageVoiceDiv', function(RerateMessage){
+
+                console.log('********************');
+                console.log(RerateMessage);
+                console.log('********************');
+
+                client.getText('div#popUpMessageVoiceDiv b', function(messsage){
+                        console.log('********************');
+                        console.log(message);
+                        console.log('********************');
+                })
+        })
+           
+        });
+
+
+       
