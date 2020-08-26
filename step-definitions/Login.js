@@ -40,7 +40,7 @@ When('fetch the account details in CWA', async () => {
 
     return client
             .waitForElementVisible('#fetchAccountInput',10000)
-            .setValue('#fetchAccountInput','98e9ea3c-8135-4027-b4e5-138bb729a768')
+            .setValue('#fetchAccountInput','9223200159')
             .keys(client.Keys.ENTER)
             .keys(client.Keys.ENTER);
 

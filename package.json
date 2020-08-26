@@ -7,7 +7,7 @@
     "test:firefox": "NIGHTWATCH_ENV=firefox npm test",
     "test:chrome": "NIGHTWATCH_ENV=chrome npm test",
     "test:chromeHeadless": "NIGHTWATCH_ENV=chromeHeadless npm test",
-    "test": "cucumber-js --tags '@Login or @accountDetail or @updateIndustry or @re-rateProcess' --require-module @babel/register --require ./cucumber.conf.js --require ./step-definitions --format node_modules/cucumber-pretty --format json:reports/cucumber_report.json",
+    "test": "cucumber-js --tags '@Login or @accountDetail or @updateIndustry or @re-rateCheck' --require-module @babel/register --require ./cucumber.conf.js --require ./step-definitions --format node_modules/cucumber-pretty --format json:reports/cucumber_report.json",
     "debug": "cross-env DEBUG=nightwatch-api NIGHTWATCH_ENV=chrome NIGHTWATCH_VERBOSE=true node --inspect ./node_modules/cucumber/bin/cucumber-js --require-module @babel/register --require cucumber.conf.js --require step-definitions --format node_modules/cucumber-pretty"
   },
   "repository": {
