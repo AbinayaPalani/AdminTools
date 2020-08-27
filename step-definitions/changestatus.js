@@ -28,21 +28,16 @@ Then('get the current status in an account status, it should be Active or Active
    return client.pause(2000).getValue("input[id='accountStatus']", function(fromStatusValue){
 
    
-       //fromStatusValue = fromStatusValue.value;
        console.log("Get the status value from the ui 2 "+fromStatusValue.value);
-
-       //client.
-  
     if(fromStatusValue.value === "Active" || fromStatusValue.value === 'Active | Past Due' 
          || fromStatusValue.value === 'Active | Notice to Block' || fromStatusValue.value === 'Active | Unpaid'){
 
-    client.waitForElementVisible('button#accountStatusButton span#accountStatusChange',3000).click('button#accountStatusButton span#accountStatusChange');
+         client.waitForElementVisible('button#accountStatusButton span#accountStatusChange',3000).click('button#accountStatusButton span#accountStatusChange');
+         client.pause(2000).click('a#delayBilling.userStatuses').pause(2000);
 
-    client.pause(2000).click('a#delayBilling.userStatuses').pause(2000);
-
- }
+        }
    
-});
+    });
 
 });
 

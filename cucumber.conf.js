@@ -36,6 +36,6 @@ AfterAll(async () => {
   }, 1000);
 });
 
-// After(function() {
-//   getNewScreenshots().forEach(file => this.attach(fs.readFileSync(file), 'image/png'));
-// });
+After(function() {
+  getNewScreenshots().forEach(file => this.attach(fs.readFileSync(file), 'image/png'));
+});
