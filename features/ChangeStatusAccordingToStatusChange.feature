@@ -16,7 +16,7 @@ Feature: Change the status according to status change for each step actions
     Then check the status in account summary, if in case failed in delay billing to active we will be in change status and then it has to be created a task link in the top
     Given check the account status is in Active
     When check change status to list to veriffy that list of status for active case
-    Then choose dormancy stauts in Change Status To 
+    Then choose dormancy status in Change Status To 
     Then move the customer for dormancy and enter the fields
     Then currently Dormancy will be holded for billing cycle end date, that we can check the note in account summary, if it is failed  it will be created a task in the top
     Given check the account status is in Active | Dormancy
