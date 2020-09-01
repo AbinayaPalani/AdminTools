@@ -48,8 +48,7 @@ Then('move the customer for delay billing and enter the fields', function () {
                  client.assert.visible('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn').click('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn')
                     .setValue('input#popupDate',"27072020").setValue('textarea#popupDescription','Testing the admintool on nightwatch js');
             }
-            else
-            {
+            else{
                  client.assert.visible('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn').click('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn')
                     .setValue('texwtarea#popupDescription','Testing the admintool on nightwatch js');  
             }
@@ -159,8 +158,7 @@ Then('move the customer for dormancy and enter the fields', function () {
             client.assert.visible('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn').click('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn')
                 .setValue('input#popupDate',"27072020").setValue('textarea#popupDescription','Testing the admintool for Dormancy');
         }
-        else
-        {
+        else{
             client.assert.visible('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn').click('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn')
                 .setValue('textarea#popupDescription','Testing the admintool for Dormancy');
              
@@ -190,8 +188,7 @@ Given('check the account status is in Active | Dormancy', function () {
                 .expect.element('#changeStatus')
                 .text.to.equal('Change Status').pause(3000).click('#changeStatus');   
         }
-        else
-        {
+        else{
             console.log('Existing test case is failed, so that you are in same section');            
         }          
     });
@@ -212,10 +209,10 @@ When('choose change status to list to verify that list of status for dormancy ca
 Then('move the customer for stop dormancy and enter the fields', function () {
           
     return client.waitForElementVisible('button#accountStatusButton span#accountStatusChange',3000)
-                    .pause(1000).click('button#accountStatusButton span#accountStatusChange')
-                    .assert.visible('a#stopDormancy.userStatuses')
-                    .click('a#stopDormancy.userStatuses')
-                    .setValue('textarea#popupDescription', 'Testing stop dormancy for admintool..!');
+                .pause(1000).click('button#accountStatusButton span#accountStatusChange')
+                .assert.visible('a#stopDormancy.userStatuses')
+                .click('a#stopDormancy.userStatuses')
+                .setValue('textarea#popupDescription', 'Testing stop dormancy for admintool..!');
     });
 
 Then('check the status in account summary, if in case failed in stop dormancy', function () {
@@ -232,12 +229,97 @@ Then('check the status in account summary, if in case failed in stop dormancy', 
     
 Given('check the account status is in Low Utilization', function () {
         
-    return client.pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(20000);
         if(client.expect.element('h4#popupHeader').text.to.equal('Account Details')){
-            console.log('Customer moved to Dormancy and then it will be holded for billing cycle end date: Test Case is passed');
+            client
+                .expect.element('#changeStatus')
+                .text.to.equal('Change Status').pause(3000).click('#changeStatus');   
         }
         else{
-            console.log('Customer doesnt moved to Dormancy, some thing broke during move to active');                
+            console.log('Existing test case is failed, so that you are in same section');            
+        }     
+    });
+
+When('check change status to verify to list of status for Low Utilization', function () {
+        
+    return client.pause(2000)
+                .click('button#accountStatusButton')
+                .waitForElementVisible("a#lowUtilizationPlan.userStatuses");
+                
+    });
+
+When('choose low utilization in Change Status To and enter the fields', function () {
+
+    var randomDatePicker,datePickerValue;    
+    return client.pause(2000)
+                .click("a#lowUtilizationPlan.userStatuses")
+                .elements("css selector","ul#datePeriod li button", function(datePicker){
+                    console.log("DatePicker length"+datePicker.value.length);
+                    datePickerValue = datePicker.value.length;
+                    console.log(datePicker);
+                    randomDatePicker = Math.floor((Math.random() * datePickerValue) + 1);
+                    console.log("choose the random date picker"+randomDatePicker);  
+                    if(randomDatePicker === 6){
+                         client.assert.visible('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn').click('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn')
+                            .setValue('input#popupDate',"27072020").setValue('textarea#popupDescription','Testing the admintool on nightwatch js');
+                    }
+                    else{
+                         client.assert.visible('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn').click('#datePeriodDiv ul#datePeriod.datePeriods li:nth-child('+randomDatePicker+').datePeriod button.datePeriodButton.radio-btn')
+                            .setValue('textarea#popupDescription','Testing the admintool on nightwatch js');           
+                    }
+            
+        });
+    });
+
+When('move the customer to low utilization', function () {
+                
+    return client.pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(20000);
+         if(client.expect.element('h4#popupHeader').text.to.equal('Account Details')){
+                console.log('Customer moved to Dormancy and then it will be holded for billing cycle end date: Test Case is passed');
         }
+        else{
+                console.log('Customer doesnt moved to Dormancy, some thing broke during move to active');                
+        }
+                
+    });
+
+Then('currently low utilization will be holded for billing cycle end date, that we can check the note in account summary, if it is failed  it will be created a task in the top', function () {
+        
+    return client.pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(20000);
+            if(client.expect.element('h4#popupHeader').text.to.equal('Account Details')){
+                console.log('Customer moved to Dormancy and then it will be holded for billing cycle end date: Test Case is passed');
+            }
+            else{
+                console.log('Customer doesnt moved to Dormancy, some thing broke during move to active');                
+            }
         
     });
+
+Given('check the account status is in holded Low Utilization', function(){
+
+        if(client.expect.element('h4#popupHeader').text.to.equal('Account Details')){
+             client
+                .expect.element('#changeStatus')
+                .text.to.equal('Change Status').pause(3000).click('#changeStatus');   
+            }
+            else{
+                console.log('Existing test case is failed, so that you are in same section');            
+            }  
+    });
+
+When('check change status to list to verify that list of status for Low Utilization', function(){
+
+    return client.pause(2000)
+                .click('button#accountStatusButton')
+                .waitForElementVisible("a#lowUtilizationPlan.userStatuses")
+                .click("a#lowUtilizationPlan.userStatuses");        
+    });
+
+    When('check change status to list to verify that list of status for Low Utilization', function(){
+        
+        
+            return client.pause(2000)
+                        .click('button#accountStatusButton')
+                        .waitForElementVisible("a#lowUtilizationPlan.userStatuses")
+                        .click("a#lowUtilizationPlan.userStatuses");
+                       
+            });
