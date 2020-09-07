@@ -32,7 +32,7 @@ Feature: Change the status according to status change for each step actions
     When check change status to list to verify that list of status for Low Utilization
     Then choose the customer for stop low utilization
     Then check the status in account summary, if in case failed in stop dormancy
-    Given check the account status is in dormancy or active or past due
+    Given check the account status is in dormancy or active or past due or active
     When check change status to list to verify that list of status for block account
     Then choose the customer for block account and enter the fields
     Then check the status in account summary, if in case failed in block account we will be in changes status and then it has to be created a task link in the top

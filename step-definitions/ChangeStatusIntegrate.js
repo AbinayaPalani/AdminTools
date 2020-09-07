@@ -270,7 +270,7 @@ When('choose low utilization in Change Status To and enter the fields', function
         });
     });
 
-When('move the customer to low utilization', function () {
+Then('move the customer to low utilization', function () {
                 
     return client.pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(20000);
          if(client.expect.element('h4#popupHeader').text.to.equal('Account Details')){
@@ -309,17 +309,128 @@ Given('check the account status is in holded Low Utilization', function(){
 When('check change status to list to verify that list of status for Low Utilization', function(){
 
     return client.pause(2000)
-                .click('button#accountStatusButton')
-                .waitForElementVisible("a#lowUtilizationPlan.userStatuses")
-                .click("a#lowUtilizationPlan.userStatuses");        
+                .click('button#accountStatusButton');
+                      
     });
 
-    When('check change status to list to verify that list of status for Low Utilization', function(){
-        
-        
-            return client.pause(2000)
-                        .click('button#accountStatusButton')
-                        .waitForElementVisible("a#lowUtilizationPlan.userStatuses")
-                        .click("a#lowUtilizationPlan.userStatuses");
+Then('choose the customer for stop low utilization', function(){
+    
+    return client.assert.visible('#formSubmit').click('#stopLowUtilizationPlan')
+                    .setValue('textarea#popupDescription','Testing the admintool on nightwatch js');
                        
-            });
+    });
+
+Then('check the status in account summary, if in case failed in stop dormancy', function(){
+        
+    return client.pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(20000);
+    if(client.expect.element('h4#popupHeader').text.to.equal('Account Details')){
+        console.log('Customer moved to Dormancy and then it will be holded for billing cycle end date: Test Case is passed');
+    }
+    else{
+        console.log('Customer doesnt moved to Dormancy, some thing broke during move to active');                
+    }                     
+    });
+
+Given('check the account status is in dormancy or active or past due or active', function(){
+        
+    if(client.expect.element('h4#popupHeader').text.to.equal('Account Details')){
+        client
+           .expect.element('#changeStatus')
+           .text.to.equal('Change Status').pause(3000).click('#changeStatus');   
+    }
+    else{
+           console.log('Existing test case is failed, so that you are in same section');            
+    }                          
+    });
+
+When('check change status to list to verify that list of status for block account', function(){
+        
+    let fromStatusValue;
+    return client.pause(2000).getValue("input[id='accountStatus']", function(fromStatusValue){
+        console.log("Get the status value from the ui 2 "+fromStatusValue.value);
+        if(fromStatusValue.value === "Active" || fromStatusValue.value === 'Active | Past Due' 
+            || fromStatusValue.value === 'Active | Notice to Block' || fromStatusValue.value === 'Active | Unpaid'
+            || fromStatusValue.value === 'Active | Dormancy' ){
+             client.waitForElementVisible('button#accountStatusButton span#accountStatusChange',3000).click('button#accountStatusButton span#accountStatusChange');
+            }
+        });                         
+    });
+
+Then('choose the customer for block account and enter the fields', function(){
+    
+        client.pause(2000).click('a#blockAccount.userStatuses').pause(2000)
+                    .setValue('textarea#popupDescription','Testing the admintool on nightwatch js');           
+    });
+
+
+Then('check the status in account summary, if in case failed in block account we will be in changes status and then it has to be created a task link in the top', function(){
+        
+    return client.pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(20000);
+    if(client.expect.element('h4#popupHeader').text.to.equal('Account Details')){
+        console.log('Customer moved to Dormancy and then it will be holded for billing cycle end date: Test Case is passed');
+    }
+    else{
+        console.log('Customer doesnt moved to Dormancy, some thing broke during move to active');                
+    } 
+    });
+
+Given('check the account status is in block status', function(){
+        
+    return client.pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(20000);
+    if(client.expect.element('h4#popupHeader').text.to.equal('Account Details')){
+        console.log('Customer moved to Dormancy and then it will be holded for billing cycle end date: Test Case is passed');
+    }
+    else{
+        console.log('Customer doesnt moved to Dormancy, some thing broke during move to active');                
+    } 
+    });
+
+When('check change status to list to verify that list of status for unblock account', function(){
+        
+    let fromStatusValue;
+    return client.pause(2000).getValue("input[id='accountStatus']", function(fromStatusValue){
+        console.log("Get the status value from the ui 2 "+fromStatusValue.value);
+        if(fromStatusValue.value === "Active | Blocked for Non-Payment"){
+             client.waitForElementVisible('button#accountStatusButton span#accountStatusChange',3000).click('button#accountStatusButton span#accountStatusChange');
+            }
+        });
+    });
+
+Then('choose unblock in Change Status To and enter the fields', function(){
+        
+    return client.waitForElementVisible("button[id='accountStatusButton']").click("a#unblock.userStatuses")
+                 .setValue('textarea#popupDescription','Testing the admintool on nightwatch js');             
+    });
+
+Then('move the customer for unblock', function(){
+        
+    return client.pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(20000);
+    if(client.expect.element('h4#popupHeader').text.to.equal('Account Details')){
+           console.log('Customer moved to Dormancy and then it will be holded for billing cycle end date: Test Case is passed');
+   }
+   else{
+           console.log('Customer doesnt moved to Dormancy, some thing broke during move to active');                
+   }
+});
+
+Then('move the customer for unblock', function(){
+    
+return client.pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(20000);
+if(client.expect.element('h4#popupHeader').text.to.equal('Account Details')){
+       console.log('Customer moved to Dormancy and then it will be holded for billing cycle end date: Test Case is passed');
+}
+else{
+       console.log('Customer doesnt moved to Dormancy, some thing broke during move to active');                
+}
+});
+
+Then('check the status in account summary, if in case failed in unblock we will be in change status and then it has to be created a task link in the top', function(){
+    
+return client.pause(1000).assert.visible('#formSubmit').click('#formSubmit').pause(20000);
+if(client.expect.element('h4#popupHeader').text.to.equal('Account Details')){
+       console.log('Customer moved to Dormancy and then it will be holded for billing cycle end date: Test Case is passed');
+}
+else{
+       console.log('Customer doesnt moved to Dormancy, some thing broke during move to active');                
+}
+});
