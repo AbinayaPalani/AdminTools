@@ -490,9 +490,7 @@ Then('get the current status in an account status, it should be Active or Active
           || fromStatusValue.value === 'Active | Notice to Block' || fromStatusValue.value === 'Active | Unpaid'
         || fromStatusValue.value === "Active | Dormancy" || fromStatusValue.value === 'Active | Delay Billing'){
  
-     client.pause(1000).waitForElementVisible('button#accountStatusButton span#accountStatusChange',3000).click('button#accountStatusButton span#accountStatusChange');
- 
-     client.pause(2000).click('a#blockAccount.userStatuses').pause(2000);
+     u
  
   }
 });
