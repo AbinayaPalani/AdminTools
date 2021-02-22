@@ -29,13 +29,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 6,
-            "name": "I open the page in CWA with 'abinaya.palani@anywhere.co' and 'mani1798'",
+            "name": "I open the page in CWA with 'abinaya.palani@anywhere.co'",
             "match": {
               "location": "step-definitions/Login.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 5688000000
+              "duration": 4569000000
             }
           },
           {
@@ -44,11 +44,11 @@
             "line": 7,
             "name": "fetch the account details in CWA",
             "match": {
-              "location": "step-definitions/Login.js:28"
+              "location": "step-definitions/Login.js:32"
             },
             "result": {
               "status": "passed",
-              "duration": 16598000000
+              "duration": 9512000000
             }
           },
           {
@@ -57,11 +57,11 @@
             "line": 8,
             "name": "select the billing page in CWA",
             "match": {
-              "location": "step-definitions/Login.js:42"
+              "location": "step-definitions/Login.js:55"
             },
             "result": {
               "status": "passed",
-              "duration": 8903000000
+              "duration": 6643000000
             }
           },
           {
@@ -70,22 +70,11 @@
             "line": 9,
             "name": "click the Admin Tool section",
             "match": {
-              "location": "step-definitions/Login.js:57"
+              "location": "step-definitions/Login.js:70"
             },
             "result": {
               "status": "passed",
-              "duration": 609000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "cucumber.conf.js:37"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 0
+              "duration": 600000000
             }
           }
         ]
@@ -123,7 +112,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 93000000
+              "duration": 131000000
             }
           },
           {
@@ -136,7 +125,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 10162000000
+              "duration": 10148000000
             }
           },
           {
@@ -149,7 +138,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 286000000
+              "duration": 33000000
             }
           },
           {
@@ -175,7 +164,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 31000000
+              "duration": 37000000
             }
           },
           {
@@ -188,7 +177,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 25000000
+              "duration": 21000000
             }
           },
           {
@@ -201,18 +190,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 22000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "cucumber.conf.js:37"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 0
+              "duration": 54000000
             }
           }
         ]
@@ -240,7 +218,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 39000000
+              "duration": 128000000
             }
           },
           {
@@ -253,7 +231,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3096000000
+              "duration": 5096000000
             }
           },
           {
@@ -262,11 +240,11 @@
             "line": 23,
             "name": "click the edit option",
             "match": {
-              "location": "step-definitions/accountdetails.js:132"
+              "location": "step-definitions/accountdetails.js:131"
             },
             "result": {
               "status": "passed",
-              "duration": 2066000000
+              "duration": 3066000000
             }
           },
           {
@@ -275,11 +253,11 @@
             "line": 24,
             "name": "typing and select the option in an industry",
             "match": {
-              "location": "step-definitions/accountdetails.js:141"
+              "location": "step-definitions/accountdetails.js:140"
             },
             "result": {
               "status": "passed",
-              "duration": 3627000000
+              "duration": 8401000000
             }
           },
           {
@@ -288,11 +266,11 @@
             "line": 25,
             "name": "update an industry",
             "match": {
-              "location": "step-definitions/accountdetails.js:163"
+              "location": "step-definitions/accountdetails.js:162"
             },
             "result": {
               "status": "passed",
-              "duration": 2150000000
+              "duration": 9179000000
             }
           },
           {
@@ -301,100 +279,12 @@
             "line": 26,
             "name": "validate updated value",
             "match": {
-              "location": "step-definitions/accountdetails.js:170"
+              "location": "step-definitions/accountdetails.js:169"
             },
             "result": {
-              "status": "passed",
-              "duration": 5713000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "cucumber.conf.js:37"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "account-details;check-the-close-button-functionality",
-        "keyword": "Scenario",
-        "line": 29,
-        "name": "Check the close button functionality",
-        "tags": [
-          {
-            "name": "@closefunc",
-            "line": 28
-          }
-        ],
-        "type": "scenario",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 31,
-            "name": "Open the admin tool",
-            "match": {
-              "location": "step-definitions/accountdetails.js:12"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 15000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 32,
-            "name": "validating the hover of edit option",
-            "match": {
-              "location": "step-definitions/accountdetails.js:114"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3073000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 33,
-            "name": "click the edit option",
-            "match": {
-              "location": "step-definitions/accountdetails.js:132"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2076000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 34,
-            "name": "click the close button and validate it",
-            "match": {
-              "location": "step-definitions/accountdetails.js:185"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2177000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "cucumber.conf.js:37"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 0
+              "status": "failed",
+              "duration": 759000000,
+              "error_message": "Error while running \"equal\" command: Failed [equal]: ('Publishing & Media' == '') - expected \u001b[0;32m\"\"\u001b[0m but got: \u001b[0;31m\"Publishing & Media\"\u001b[0m \u001b[0;90m(0ms)\u001b[0m\n    at NightwatchAPI.<anonymous> (/Users/abinaya/git/NightWatch/step-definitions/accountdetails.js:177:29)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)"
             }
           }
         ]
@@ -403,20 +293,20 @@
   },
   {
     "keyword": "Feature",
-    "name": "Credit functionality",
+    "name": "Rerate functionality",
     "line": 2,
-    "id": "credit-functionality",
+    "id": "rerate-functionality",
     "tags": [],
-    "uri": "features/Credit.feature",
+    "uri": "features/Rerate.feature",
     "elements": [
       {
-        "id": "credit-functionality;process-the-credit-adjustment-with-duplicate-credit-amount",
+        "id": "rerate-functionality;check-the-re-rate-information",
         "keyword": "Scenario",
         "line": 25,
-        "name": "process the Credit Adjustment with duplicate credit amount",
+        "name": "Check the re-rate information",
         "tags": [
           {
-            "name": "@duplicateCreditSubmit",
+            "name": "@re-rateCheck",
             "line": 24
           }
         ],
@@ -425,262 +315,41 @@
           {
             "arguments": [],
             "keyword": "Given ",
+            "line": 27,
+            "name": "Open the admin tool",
+            "match": {
+              "location": "step-definitions/accountdetails.js:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 125000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
             "line": 28,
-            "name": "Open the admin tool",
+            "name": "check the rerate section is present",
             "match": {
-              "location": "step-definitions/accountdetails.js:12"
+              "location": "step-definitions/Rerate.js:5"
             },
             "result": {
               "status": "passed",
-              "duration": 21000000
+              "duration": 50000000
             }
           },
           {
             "arguments": [],
-            "keyword": "When ",
+            "keyword": "Then ",
             "line": 29,
-            "name": "check the credit section is present",
+            "name": "check the validation for whether re-rate credit under the customer it can no re-rate or already is in best plan",
             "match": {
-              "location": "step-definitions/credit.js:6"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 43000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 30,
-            "name": "select the credit section and click create credit link",
-            "match": {
-              "location": "step-definitions/credit.js:18"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 7464000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 31,
-            "name": "Pass the necessary data to process the credit",
-            "match": {
-              "location": "step-definitions/credit.js:29"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 531000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 32,
-            "name": "select the reason list for credit",
-            "match": {
-              "location": "step-definitions/credit.js:38"
+              "location": "step-definitions/Rerate.js:69"
             },
             "result": {
               "status": "failed",
-              "duration": 60009000000,
-              "error_message": "Error: function timed out, ensure the promise resolves within 60000 milliseconds\n    at Timeout._onTimeout (/Users/abinaya/git/NightWatch/node_modules/cucumber/lib/user_code_runner.js:76:18)\n    at listOnTimeout (internal/timers.js:549:17)\n    at processTimers (internal/timers.js:492:7)"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 33,
-            "name": "submit the credit and handle if duplicate credit is present so process the credit",
-            "match": {
-              "location": "step-definitions/credit.js:74"
-            },
-            "result": {
-              "status": "skipped"
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "cucumber.conf.js:37"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 0
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "keyword": "Feature",
-    "name": "Debit functionality",
-    "line": 2,
-    "id": "debit-functionality",
-    "tags": [],
-    "uri": "features/Debit.feature",
-    "elements": [
-      {
-        "id": "debit-functionality;clear-the-debit-information",
-        "keyword": "Scenario",
-        "line": 14,
-        "name": "clear the debit information",
-        "tags": [
-          {
-            "name": "@debitFormClear",
-            "line": 13
-          }
-        ],
-        "type": "scenario",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 16,
-            "name": "Open the admin tool",
-            "match": {
-              "location": "step-definitions/accountdetails.js:12"
-            },
-            "result": {
-              "status": "failed",
-              "duration": 60004000000,
-              "error_message": "Error: function timed out, ensure the promise resolves within 60000 milliseconds\n    at Timeout._onTimeout (/Users/abinaya/git/NightWatch/node_modules/cucumber/lib/user_code_runner.js:76:18)\n    at listOnTimeout (internal/timers.js:549:17)\n    at processTimers (internal/timers.js:492:7)"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 17,
-            "name": "check the debit section is present",
-            "match": {
-              "location": "step-definitions/debit.js:6"
-            },
-            "result": {
-              "status": "skipped"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 18,
-            "name": "select the debit section and click create debit link",
-            "match": {
-              "location": "step-definitions/debit.js:18"
-            },
-            "result": {
-              "status": "skipped"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 19,
-            "name": "Pass the necessary data to process the debit",
-            "match": {
-              "location": "step-definitions/debit.js:29"
-            },
-            "result": {
-              "status": "skipped"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 20,
-            "name": "clear the data",
-            "match": {
-              "location": "step-definitions/debit.js:72"
-            },
-            "result": {
-              "status": "skipped"
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "cucumber.conf.js:37"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 0
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "keyword": "Feature",
-    "name": "Additional or Needed functionality",
-    "line": 2,
-    "id": "additional-or-needed-functionality",
-    "tags": [],
-    "uri": "features/NecessarySettingFunction.feature",
-    "elements": [
-      {
-        "id": "additional-or-needed-functionality;enable-the-allow-ach",
-        "keyword": "Scenario",
-        "line": 31,
-        "name": "Enable the Allow ACH",
-        "tags": [
-          {
-            "name": "@enableAllowAch",
-            "line": 30
-          }
-        ],
-        "type": "scenario",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 33,
-            "name": "Open the admin tool",
-            "match": {
-              "location": "step-definitions/accountdetails.js:12"
-            },
-            "result": {
-              "status": "failed",
-              "duration": 60004000000,
-              "error_message": "Error: function timed out, ensure the promise resolves within 60000 milliseconds\n    at Timeout._onTimeout (/Users/abinaya/git/NightWatch/node_modules/cucumber/lib/user_code_runner.js:76:18)\n    at listOnTimeout (internal/timers.js:549:17)\n    at processTimers (internal/timers.js:492:7)"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 34,
-            "name": "Check whether the allow ach is present or visible",
-            "match": {
-              "location": "step-definitions/AdditionalFeature.js:98"
-            },
-            "result": {
-              "status": "skipped"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 35,
-            "name": "Enable the allow ach option in admintool",
-            "match": {
-              "location": "step-definitions/AdditionalFeature.js:105"
-            },
-            "result": {
-              "status": "skipped"
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "cucumber.conf.js:37"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 0
+              "duration": 7610000000,
+              "error_message": "message is not defined\nReferenceError: message is not defined\n    at NightwatchAPI.<anonymous> (/Users/abinaya/git/NightWatch/step-definitions/Rerate.js:79:37)\n    at GetText.complete (/Users/abinaya/git/NightWatch/node_modules/nightwatch/lib/element/command.js:210:27)\n    at successHandler (/Users/abinaya/git/NightWatch/node_modules/nightwatch/lib/api/element-commands/_baseElementCommand.js:25:45)\n    at PeriodicPromise.perform (/Users/abinaya/git/NightWatch/node_modules/nightwatch/lib/utils/periodic-promise.js:105:29)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)\n    at PeriodicPromise.runAction (/Users/abinaya/git/NightWatch/node_modules/nightwatch/lib/utils/periodic-promise.js:48:22)\n    at PeriodicPromise.runAction (/Users/abinaya/git/NightWatch/node_modules/nightwatch/lib/utils/periodic-promise.js:51:16)"
             }
           }
         ]
